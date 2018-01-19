@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "71798080306",
+    "firebase_url": "https://flor-de-lis-store-2baa7.firebaseio.com",
+    "project_id": "flor-de-lis-store-2baa7",
+    "storage_bucket": "flor-de-lis-store-2baa7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71798080306:android:0ccf1981ea6dec1e",
+        "android_client_info": {
+          "package_name": "com.flordelisstore.flordelisstoregerencia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71798080306-s99gdkh90960qt7n2uohd26gioeqf0ob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flordelisstore.flordelisstoregerencia",
+            "certificate_hash": "63d4d14c811294cf1c49e983d95df76e7437611c"
+          }
+        },
+        {
+          "client_id": "71798080306-52u6etl4fmo9fj9i3qket08vm53gaelh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfTNN4G573Fsww-a7Q760SQ79GWAjFv0A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71798080306-52u6etl4fmo9fj9i3qket08vm53gaelh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71798080306:android:3310ddee049919d4",
+        "android_client_info": {
+          "package_name": "com.flordelis.flordelis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71798080306-hqqivj3qo2t3spfjlfmju1a3s768gonu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flordelis.flordelis",
+            "certificate_hash": "71974c7179df06c77fcb4ce5feb29450972e71bf"
+          }
+        },
+        {
+          "client_id": "71798080306-52u6etl4fmo9fj9i3qket08vm53gaelh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfTNN4G573Fsww-a7Q760SQ79GWAjFv0A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71798080306-52u6etl4fmo9fj9i3qket08vm53gaelh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
