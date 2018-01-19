@@ -10,4 +10,7 @@
     <color name="divider">#CCC</color>
     <color name="icons">#FFF</color>
     <color name="item_background">#FFF</color>
+
+    <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextDisable">#66FFFFFF</color>
 </resources>
