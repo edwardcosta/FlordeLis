@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_height">
@@ -49,7 +50,7 @@
         android:padding="@dimen/item_padding">
 
         <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/image"
+            android:id="@+id/card_product_image"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginRight="10dp"
@@ -57,18 +58,18 @@
             app:roundAsCircle="true"/>
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/card_product_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/image"
+            android:layout_toRightOf="@+id/card_product_image"
             android:singleLine="true"
             android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/author"
-            android:layout_below="@+id/title"
-            android:layout_alignLeft="@+id/title"
+            android:layout_below="@+id/card_product_title"
+            android:layout_alignLeft="@+id/card_product_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14dp" />

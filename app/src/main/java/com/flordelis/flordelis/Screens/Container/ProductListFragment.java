@@ -1,0 +1,135 @@
+package com.flordelis.flordelis.Screens.Container;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.flordelis.flordelis.Model.Product;
+import com.flordelis.flordelis.R;
+import com.flordelis.flordelis.Utils.Product.ProductAdapter;
+import com.github.ksoichiro.android.observablescrollview.ObservableRecyclerView;
+import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
+import com.github.ksoichiro.android.observablescrollview.ScrollState;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import co.dift.ui.SwipeToAction;
+
+/**
+ * Created by Sala on 19/01/2018.
+ */
+
+public class ProductListFragment extends Fragment implements ObservableScrollViewCallbacks {
+
+    private View parentView;
+
+    private ObservableRecyclerView recyclerView;
+    private ProductAdapter productAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private SwipeToAction swipeToAction;
+
+    private List<Product> products = new ArrayList<>();
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        parentView = inflater.inflate(R.layout.fragment_products_list,container,false);
+
+        recyclerView = (ObservableRecyclerView) parentView.findViewById(R.id.activity_main_recyclerview);
+        swipeRefreshLayout = (SwipeRefreshLayout) parentView.findViewById(R.id.fragment_product_list_swipetorefresh);
+        recyclerView.setScrollViewCallbacks(this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        Product p1 = new Product();
+        p1.setProductName("Produto Teste 1");
+        List<String> img1 = new ArrayList<>();
+        img1.add("www.redparts.com.br/wp-content/uploads/produto_teste.jpg");
+        p1.setImages(img1);
+
+        Product p2 = new Product();
+        p2.setProductName("Produto Teste 2");
+        List<String> img2 = new ArrayList<>();
+        img2.add("http://www.infostore.com.br/Assets/Produtos/SuperZoom/produto_teste_635859432774890946.jpg");
+        p2.setImages(img2);
+
+        Product p3 = new Product();
+        p3.setProductName("Produto Teste 3");
+
+        products.add(p1);
+        products.add(p2);
+        products.add(p3);
+
+        productAdapter = new ProductAdapter(this.getContext(), products);
+        recyclerView.setAdapter(productAdapter);
+
+        swipeToAction = new SwipeToAction(recyclerView, new SwipeToAction.SwipeListener<Product>() {
+            @Override
+            public boolean swipeLeft(Product itemData) {
+                return false;
+            }
+
+            @Override
+            public boolean swipeRight(Product itemData) {
+                return false;
+            }
+
+            @Override
+            public void onClick(Product itemData) {
+
+            }
+
+            @Override
+            public void onLongClick(Product itemData) {
+
+            }
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                onRefreshContent();
+            }
+        });
+
+        return parentView;
+    }
+
+    @Override
+    public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
+
+    }
+
+    @Override
+    public void onDownMotionEvent() {
+
+    }
+
+    @Override
+    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+        ActionBar ab = ((AppCompatActivity) this.getActivity()).getSupportActionBar();
+        if (scrollState == ScrollState.UP) {
+            if (ab.isShowing()) {
+                ab.hide();
+            }
+        } else if (scrollState == ScrollState.DOWN) {
+            if (!ab.isShowing()) {
+                ab.show();
+            }
+        }
+    }
+
+    private void onRefreshContent(){
+        swipeRefreshLayout.setRefreshing(false);
+    }
+}
