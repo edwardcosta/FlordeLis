@@ -23,6 +23,7 @@ import android.view.ViewAnimationUtils;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private Toolbar toolbar;
     private Toolbar searchtollbar;
+    private Spinner spinner;
 
     private SimpleDraweeView _userImg;
 
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         setSearchtollbar();
 
         _userImg = (SimpleDraweeView) toolbar.findViewById(R.id.activity_main_user_img);
+        spinner = (Spinner) toolbar.findViewById(R.id.activity_main_spinner);
 
         _userImg.setImageURI("http://www.ezziliving.com/images/testimonial3.png");
 
