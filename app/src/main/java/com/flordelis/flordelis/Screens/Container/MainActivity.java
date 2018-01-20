@@ -1,11 +1,10 @@
-package com.flordelis.flordelis.Screens;
+package com.flordelis.flordelis.Screens.Container;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,7 +12,6 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -32,8 +30,8 @@ import android.widget.Toast;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.R;
-import com.flordelis.flordelis.Screens.Container.ProductListFragment;
-import com.flordelis.flordelis.Screens.Container.UserFragment;
+import com.flordelis.flordelis.Screens.Container.Product.ProductListFragment;
+import com.flordelis.flordelis.Screens.Container.User.UserFragment;
 
 import java.lang.reflect.Field;
 

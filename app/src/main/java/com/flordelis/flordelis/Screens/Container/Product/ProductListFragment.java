@@ -1,4 +1,4 @@
-package com.flordelis.flordelis.Screens.Container;
+package com.flordelis.flordelis.Screens.Container.Product;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
+import com.flordelis.flordelis.Screens.Container.Product.ProductFragment;
 import com.flordelis.flordelis.Utils.Product.ProductAdapter;
 
 import java.util.ArrayList;

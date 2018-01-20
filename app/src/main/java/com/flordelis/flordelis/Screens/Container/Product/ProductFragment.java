@@ -1,4 +1,4 @@
-package com.flordelis.flordelis.Screens.Container;
+package com.flordelis.flordelis.Screens.Container.Product;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
