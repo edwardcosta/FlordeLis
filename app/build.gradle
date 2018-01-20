@@ -30,7 +30,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     compile 'com.firebaseui:firebase-ui-auth:3.1.0'
-    compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
     compile 'co.dift.ui.swipetoaction:library:1.1'
 
 }

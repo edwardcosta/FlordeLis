@@ -29,19 +29,10 @@ import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
 import com.flordelis.flordelis.Screens.Container.ProductListFragment;
-import com.flordelis.flordelis.Utils.Product.ProductAdapter;
-import com.github.ksoichiro.android.observablescrollview.ObservableRecyclerView;
-import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
-import com.github.ksoichiro.android.observablescrollview.ScrollState;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-
-import co.dift.ui.SwipeToAction;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
         setSearchtollbar();
 
         _userImg = (SimpleDraweeView) toolbar.findViewById(R.id.activity_main_user_img);

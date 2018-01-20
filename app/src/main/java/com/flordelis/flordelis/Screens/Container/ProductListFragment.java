@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,6 @@ import android.view.ViewGroup;
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
 import com.flordelis.flordelis.Utils.Product.ProductAdapter;
-import com.github.ksoichiro.android.observablescrollview.ObservableRecyclerView;
-import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
-import com.github.ksoichiro.android.observablescrollview.ScrollState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +25,11 @@ import co.dift.ui.SwipeToAction;
  * Created by Sala on 19/01/2018.
  */
 
-public class ProductListFragment extends Fragment implements ObservableScrollViewCallbacks {
+public class ProductListFragment extends Fragment {
 
     private View parentView;
 
-    private ObservableRecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private SwipeToAction swipeToAction;
@@ -43,9 +41,8 @@ public class ProductListFragment extends Fragment implements ObservableScrollVie
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         parentView = inflater.inflate(R.layout.fragment_products_list,container,false);
 
-        recyclerView = (ObservableRecyclerView) parentView.findViewById(R.id.activity_main_recyclerview);
+        recyclerView = (RecyclerView) parentView.findViewById(R.id.activity_main_recyclerview);
         swipeRefreshLayout = (SwipeRefreshLayout) parentView.findViewById(R.id.fragment_product_list_swipetorefresh);
-        recyclerView.setScrollViewCallbacks(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -103,30 +100,6 @@ public class ProductListFragment extends Fragment implements ObservableScrollVie
         });
 
         return parentView;
-    }
-
-    @Override
-    public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
-
-    }
-
-    @Override
-    public void onDownMotionEvent() {
-
-    }
-
-    @Override
-    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-        ActionBar ab = ((AppCompatActivity) this.getActivity()).getSupportActionBar();
-        if (scrollState == ScrollState.UP) {
-            if (ab.isShowing()) {
-                ab.hide();
-            }
-        } else if (scrollState == ScrollState.DOWN) {
-            if (!ab.isShowing()) {
-                ab.show();
-            }
-        }
     }
 
     private void onRefreshContent(){

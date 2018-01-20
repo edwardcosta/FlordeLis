@@ -30,44 +30,62 @@
                     android:background="?attr/colorPrimary"
                     app:popupTheme="@style/AppTheme.PopupOverlay">
 
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/user_photo"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        app:elevation="0dp"
-                        android:shape="ring"
-                        android:thicknessRatio="1.9"
-                        app:cardCornerRadius="17dp"
-                        android:innerRadius="0dp"
-                        app:cardBackgroundColor="@color/colorPrimary">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/actvity_main_logo"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/logo_name"/>
 
                         <android.support.v7.widget.CardView
-                            android:layout_width="34dp"
-                            android:layout_height="34dp"
+                            android:id="@+id/user_photo"
+                            android:layout_toRightOf="@id/actvity_main_logo"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
                             app:elevation="0dp"
-                            android:layout_gravity="center"
                             android:shape="ring"
                             android:thicknessRatio="1.9"
-                            app:cardCornerRadius="16dp"
-                            android:innerRadius="0dp">
+                            app:cardCornerRadius="17dp"
+                            android:innerRadius="0dp"
+                            app:cardBackgroundColor="@color/colorPrimary">
 
-                            <com.facebook.drawee.view.SimpleDraweeView
-                                android:id="@+id/activity_main_user_img"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent" />
+                            <android.support.v7.widget.CardView
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                app:elevation="0dp"
+                                android:layout_gravity="center"
+                                android:shape="ring"
+                                android:thicknessRatio="1.9"
+                                app:cardCornerRadius="16dp"
+                                android:innerRadius="0dp">
+
+                                <com.facebook.drawee.view.SimpleDraweeView
+                                    android:id="@+id/activity_main_user_img"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                            </android.support.v7.widget.CardView>
 
                         </android.support.v7.widget.CardView>
 
-                    </android.support.v7.widget.CardView>
+                        <Spinner
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/activity_main_spinner"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
-                    <Spinner
-                        android:id="@+id/activity_main_spinner"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                    </RelativeLayout>
 
                 </android.support.v7.widget.Toolbar>
 
