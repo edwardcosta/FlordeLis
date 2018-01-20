@@ -33,6 +33,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.R;
 import com.flordelis.flordelis.Screens.Container.ProductListFragment;
+import com.flordelis.flordelis.Screens.Container.UserFragment;
 
 import java.lang.reflect.Field;
 
@@ -82,9 +83,10 @@ public class MainActivity extends AppCompatActivity {
         _userImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar snackbar1 = Snackbar.make(findViewById(R.id.fragment_coordinator_layout),
-                        "Imagem Clicada", Snackbar.LENGTH_SHORT);
-                snackbar1.show();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content,new UserFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 

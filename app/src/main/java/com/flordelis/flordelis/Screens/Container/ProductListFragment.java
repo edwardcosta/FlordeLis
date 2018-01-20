@@ -37,19 +37,9 @@ public class ProductListFragment extends Fragment {
 
     private List<Product> products = new ArrayList<>();
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        parentView = inflater.inflate(R.layout.fragment_list,container,false);
-
-        recyclerView = (RecyclerView) parentView.findViewById(R.id.activity_main_recyclerview);
-        swipeRefreshLayout = (SwipeRefreshLayout) parentView.findViewById(R.id.fragment_list_swipetorefresh);
-        fab = (FloatingActionButton) parentView.findViewById(R.id.fragment_fab);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         Product p1 = new Product();
         p1.setProductName("Produto Teste 1");
         List<String> img1 = new ArrayList<>();
@@ -70,6 +60,21 @@ public class ProductListFragment extends Fragment {
         products.add(p3);
 
         productAdapter = new ProductAdapter(this.getContext(), products);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        parentView = inflater.inflate(R.layout.fragment_list,container,false);
+
+        recyclerView = (RecyclerView) parentView.findViewById(R.id.activity_main_recyclerview);
+        swipeRefreshLayout = (SwipeRefreshLayout) parentView.findViewById(R.id.fragment_list_swipetorefresh);
+        fab = (FloatingActionButton) parentView.findViewById(R.id.fragment_fab);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
         recyclerView.setAdapter(productAdapter);
 
         swipeToAction = new SwipeToAction(recyclerView, new SwipeToAction.SwipeListener<Product>() {
@@ -107,7 +112,10 @@ public class ProductListFragment extends Fragment {
 
             @Override
             public void onClick(Product itemData) {
-
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content,new ProductFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
 
             @Override
@@ -136,6 +144,8 @@ public class ProductListFragment extends Fragment {
     }
 
     private void onRefreshContent(){
+        productAdapter = new ProductAdapter(this.getContext(), products);
+        recyclerView.setAdapter(productAdapter);
         swipeRefreshLayout.setRefreshing(false);
     }
 }
