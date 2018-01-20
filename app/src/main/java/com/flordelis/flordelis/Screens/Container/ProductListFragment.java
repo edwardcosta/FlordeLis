@@ -2,10 +2,10 @@ package com.flordelis.flordelis.Screens.Container;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,16 +33,18 @@ public class ProductListFragment extends Fragment {
     private ProductAdapter productAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private SwipeToAction swipeToAction;
+    private FloatingActionButton fab;
 
     private List<Product> products = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        parentView = inflater.inflate(R.layout.fragment_products_list,container,false);
+        parentView = inflater.inflate(R.layout.fragment_list,container,false);
 
         recyclerView = (RecyclerView) parentView.findViewById(R.id.activity_main_recyclerview);
-        swipeRefreshLayout = (SwipeRefreshLayout) parentView.findViewById(R.id.fragment_product_list_swipetorefresh);
+        swipeRefreshLayout = (SwipeRefreshLayout) parentView.findViewById(R.id.fragment_list_swipetorefresh);
+        fab = (FloatingActionButton) parentView.findViewById(R.id.fragment_fab);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -73,11 +75,33 @@ public class ProductListFragment extends Fragment {
         swipeToAction = new SwipeToAction(recyclerView, new SwipeToAction.SwipeListener<Product>() {
             @Override
             public boolean swipeLeft(Product itemData) {
+                Snackbar mySnackbar = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
+                        "Deletado", Snackbar.LENGTH_LONG);
+                mySnackbar.setAction("Desfazer", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar snackbar1 = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
+                                "Desfeito", Snackbar.LENGTH_SHORT);
+                        snackbar1.show();
+                    }
+                });
+                mySnackbar.show();
                 return false;
             }
 
             @Override
             public boolean swipeRight(Product itemData) {
+                Snackbar mySnackbar = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
+                        "Vendido", Snackbar.LENGTH_LONG);
+                mySnackbar.setAction("Desfazer", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar snackbar1 = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
+                                "Desfeito", Snackbar.LENGTH_SHORT);
+                        snackbar1.show();
+                    }
+                });
+                mySnackbar.show();
                 return false;
             }
 
@@ -96,6 +120,15 @@ public class ProductListFragment extends Fragment {
             @Override
             public void onRefresh() {
                 onRefreshContent();
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar snackbar1 = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
+                        "FAB clicado", Snackbar.LENGTH_SHORT);
+                snackbar1.show();
             }
         });
 

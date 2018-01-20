@@ -7,6 +7,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import co.dift.ui.SwipeToAction;
@@ -19,12 +20,17 @@ public class ProductHolder extends SwipeToAction.ViewHolder implements View.OnCl
 
     private SimpleDraweeView _img;
     private TextView _title;
+    private TextView _id;
+    private TextView _price;
 
     public ProductHolder(View v) {
         super(v);
 
         _img = (SimpleDraweeView) v.findViewById(R.id.card_product_image);
         _title = (TextView) v.findViewById(R.id.card_product_title);
+        _id = (TextView) v.findViewById(R.id.card_product_id);
+        _price = (TextView) v.findViewById(R.id.card_product_price);
+
     }
 
     @Override
@@ -40,6 +46,13 @@ public class ProductHolder extends SwipeToAction.ViewHolder implements View.OnCl
                 _img.setImageURI(images.get(0));
             if (product.getProductName() != null && !product.getProductName().isEmpty())
                 _title.setText(product.getProductName());
+            if(product.getId() != null && !product.getId().isEmpty())
+                _id.setText(product.getId());
+            if(product.getSalePrice() != null && !product.getSalePrice().isEmpty()){
+                String price = NumberFormat.getCurrencyInstance().format(product.getSalePrice());
+                _price.setText(price);
+            }
+
         }
     }
 }

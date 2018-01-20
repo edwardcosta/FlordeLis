@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Flor de Lis</string>
+
+    <string-array name="product_situation">
+        <item>Estoque</item>
+        <item>Vendido</item>
+        <item>Deletado</item>
+    </string-array>
+
 </resources>

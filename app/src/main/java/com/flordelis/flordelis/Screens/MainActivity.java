@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -20,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -76,6 +78,27 @@ public class MainActivity extends AppCompatActivity {
 
         fragment = new ProductListFragment();
         fragmentTransaction.add(R.id.content, fragment).commit();
+
+        _userImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar snackbar1 = Snackbar.make(findViewById(R.id.fragment_coordinator_layout),
+                        "Imagem Clicada", Snackbar.LENGTH_SHORT);
+                snackbar1.show();
+            }
+        });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         /*_logout.setOnClickListener(new View.OnClickListener() {
             @Override
