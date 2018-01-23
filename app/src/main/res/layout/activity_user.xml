@@ -27,7 +27,7 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:transitionName="user_img"
-            android:id="@+id/edit_profile_user_image"
+            android:id="@+id/user_actitivy_user_image"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_width="100dp"

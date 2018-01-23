@@ -1,4 +1,4 @@
-package com.flordelis.flordelis.Screens.Container;
+package com.flordelis.flordelis.Screens.Main;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,7 +14,6 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -33,8 +32,7 @@ import android.widget.Toast;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.R;
-import com.flordelis.flordelis.Screens.Container.Product.ProductListFragment;
-import com.flordelis.flordelis.Screens.Container.User.UserFragment;
+import com.flordelis.flordelis.Screens.Product.ProductListFragment;
 import com.flordelis.flordelis.Screens.User.UserActivity;
 
 import java.lang.reflect.Field;
@@ -84,11 +82,8 @@ public class MainActivity extends AppCompatActivity {
         _userImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content,new UserFragment())
-                        .addToBackStack(null)
-                        .commit();*/
                 Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                _userImg.setLegacyVisibilityHandlingEnabled(true);
                 ActivityOptions options = ActivityOptions
                         .makeSceneTransitionAnimation(MainActivity.this, _userImg, "user_img");
                 // start the new activity

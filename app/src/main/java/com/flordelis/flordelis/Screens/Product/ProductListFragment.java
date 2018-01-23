@@ -1,5 +1,7 @@
-package com.flordelis.flordelis.Screens.Container.Product;
+package com.flordelis.flordelis.Screens.Product;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -12,14 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
+import com.flordelis.flordelis.Screens.Main.MainActivity;
 import com.flordelis.flordelis.Utils.Product.ProductAdapter;
+import com.flordelis.flordelis.Utils.SwipeToAction;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import co.dift.ui.SwipeToAction;
 
 /**
  * Created by Sala on 19/01/2018.
@@ -67,7 +70,7 @@ public class ProductListFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         parentView = inflater.inflate(R.layout.fragment_list,container,false);
 
         recyclerView = (RecyclerView) parentView.findViewById(R.id.activity_main_recyclerview);
@@ -114,15 +117,20 @@ public class ProductListFragment extends Fragment {
             }
 
             @Override
-            public void onClick(Product itemData) {
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.content,new ProductFragment())
-                        .addToBackStack(null)
-                        .commit();
+            public void onClick(Product itemData, View view) {
+                SimpleDraweeView _productImg = view.findViewById(R.id.card_product_image);
+                _productImg.setLegacyVisibilityHandlingEnabled(true);
+                _productImg.setTransitionName("product_image" + itemData.getId());
+                Intent intent = new Intent(getActivity(), ProductActivity.class);
+                intent.putExtra("product_image",_productImg.getTransitionName());
+                intent.putExtra("product",itemData);
+                ActivityOptions options = ActivityOptions
+                        .makeSceneTransitionAnimation(getActivity(), _productImg, _productImg.getTransitionName());
+                startActivity(intent, options.toBundle());
             }
 
             @Override
-            public void onLongClick(Product itemData) {
+            public void onLongClick(Product itemData, View view) {
 
             }
         });

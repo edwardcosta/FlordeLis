@@ -17,9 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Screens.Container.MainActivity"
+        <activity android:name=".Screens.Main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Screens.User.UserActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Screens.Product.ProductActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

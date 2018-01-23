@@ -4,9 +4,10 @@ package com.flordelis.flordelis.Model;
  *Created by Sala on 19/01/2018.
  */
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Product {
+public class Product implements Serializable{
     private String id;
     private String addedBy;
     private String editedBy;

@@ -6,11 +6,12 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
+import com.flordelis.flordelis.Utils.SwipeToAction;
 
 import java.text.NumberFormat;
 import java.util.List;
 
-import co.dift.ui.SwipeToAction;
+
 
 /**
  * Created by Sala on 19/01/2018.
@@ -35,7 +36,6 @@ public class ProductHolder extends SwipeToAction.ViewHolder implements View.OnCl
 
     @Override
     public void onClick(View view) {
-
     }
 
     public void initLayout(){
