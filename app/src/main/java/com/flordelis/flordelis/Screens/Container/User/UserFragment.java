@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toolbar;
 
 import com.flordelis.flordelis.R;
 
@@ -28,7 +27,7 @@ public class UserFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        parentView = inflater.inflate(R.layout.fragment_user,container,false);
+        parentView = inflater.inflate(R.layout.activity_user,container,false);
 
 
         return parentView;

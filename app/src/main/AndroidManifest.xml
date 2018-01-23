@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".Screens.Container.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Screens.User.UserActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
