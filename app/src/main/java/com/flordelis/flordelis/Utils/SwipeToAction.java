@@ -409,7 +409,7 @@ public class SwipeToAction {
     }
 
     public static abstract class ViewHolder<T extends Object>
-            extends RecyclerView.ViewHolder implements co.dift.ui.SwipeToAction.IViewHolder {
+            extends RecyclerView.ViewHolder implements IViewHolder {
 
         public T data;
         public View front;
