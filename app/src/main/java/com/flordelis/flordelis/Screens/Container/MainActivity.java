@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Toolbar searchtollbar;
     private Spinner spinner;
+    Fragment fragment;
 
     private SimpleDraweeView _userImg;
 
@@ -67,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
 
-        FragmentTransaction fragmentTransaction;
+        final FragmentTransaction fragmentTransaction;
         fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = fragmentManager.findFragmentById(R.id.content);
+        fragment = fragmentManager.findFragmentById(R.id.content);
 
         if (fragment != null) {
             fragmentTransaction.remove(fragment);
@@ -276,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!isShow)
                 {
                     super.onAnimationEnd(animation);
-                    myView.setVisibility(View.INVISIBLE);
+                    myView.setVisibility(View.GONE);
                 }
             }
         });

@@ -1,6 +1,511 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Imagem do Produto -->
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/fragment_product_image"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            app:placeholderImage="@drawable/no_img"/>
+
+        <!-- ID do Produto -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="id:"/>
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_atcivity_id"/>
+
+
+        </LinearLayout>
+        <!-- ID do Produto -->
+
+        <!-- Situação do Produto -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Situação:"/>
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_atcivity_situation"/>
+
+
+        </LinearLayout>
+        <!-- Situação do Produto -->
+
+        <!-- Nome do Produto -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Produto:"/>
+
+            <EditText
+                android:inputType="textAutoCorrect|textCapCharacters"
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_name"/>
+
+
+        </LinearLayout>
+        <!-- Nome do Produto -->
+
+        <!-- Preço de Custo do Produto -->
+        <LinearLayout
+            android:id="@+id/product_activity_buyed_price_layout"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preço de compra:"/>
+
+            <EditText
+                android:inputType="numberDecimal"
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_buyed_price"/>
+
+
+        </LinearLayout>
+        <!-- Preço de Custo do Produto -->
+
+        <!-- Preço de Venda do Produto -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preço de Venda:"/>
+
+            <EditText
+                android:inputType="numberDecimal"
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_sale_price"/>
+
+
+        </LinearLayout>
+        <!-- Preço de Venda do Produto -->
+
+        <!-- Quantidade do Produto -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantidade:"/>
+
+            <EditText
+                android:inputType="number"
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_quantity"/>
+
+
+        </LinearLayout>
+        <!-- Quantidade do Produto -->
+
+        <!-- Cor do Produto -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cor:"/>
+
+            <AutoCompleteTextView
+                android:inputType="textAutoComplete|textAutoCorrect"
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_color"/>
+
+
+        </LinearLayout>
+        <!-- Cor do Produto -->
+
+        <!-- Tamamho do Produto Viewer -->
+        <LinearLayout
+            android:id="@+id/product_activity_size_viewer_layout"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tamanho:"/>
+
+            <EditText
+                android:inputType="textAutoCorrect|textCapCharacters"
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_size"/>
+
+
+        </LinearLayout>
+        <!-- Tamanho do Produto Viewer -->
+
+        <!-- Tamanho do Produto Choicer -->
+        <LinearLayout
+            android:id="@+id/product_activity_size_chooser_layout"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Type Chooser -->
+            <LinearLayout
+                android:layout_margin="@dimen/text_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tamanho"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <Spinner
+                    android:id="@+id/product_activity_size_type_chooser_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <!-- Type Chooser -->
+
+            <!-- Padrão Choice -->
+            <LinearLayout
+                android:layout_margin="@dimen/text_margin"
+                android:id="@+id/product_activity_default_choice_type_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:text="Babylook"
+                    android:layout_marginEnd="8dp"/>
+
+                <Spinner
+                    android:id="@+id/product_activity_size_bb_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:text="Tamanho:"
+                    android:layout_marginEnd="8dp"/>
+
+                <Spinner
+                    android:id="@+id/product_activity_size_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <!-- Padrão Choice -->
+
+            <!-- Numeração Choice -->
+            <LinearLayout
+                android:id="@+id/product_activity_numeration_choice_type_layout"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:text="Numeração"/>
+
+                <Spinner
+                    android:id="@+id/product_activity_numeration_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <!-- Numeração Choice -->
+
+        </LinearLayout>
+        <!-- Tamanho do Produto Choicer -->
+
+        <!-- Fornecedor -->
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:text="Forncedor:"/>
+
+            <TextView
+                android:id="@+id/product_activity_provider_label"
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"/>
+
+            <Spinner
+                android:id="@+id/product_activity_provider_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+        </LinearLayout>
+        <!-- Fornecedor -->
+
+        <!-- Descrição do Produto -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descrição"/>
+
+            <EditText
+                android:inputType="textMultiLine|textAutoCorrect"
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_description"/>
+
+
+        </LinearLayout>
+        <!-- Descrição do Produto -->
+
+        <!-- Produto Adicionado Por -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adicionado por:"/>
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_added_by"/>
+
+
+        </LinearLayout>
+        <!-- Produto Adicionado Por -->
+
+        <!-- Data da Adição do Produto -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data da criação:"/>
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_add_date"/>
+
+
+        </LinearLayout>
+        <!-- Data da Adição do Produto -->
+
+        <!-- Produto Editado Por -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editado por:"/>
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_edited_by"/>
+
+
+        </LinearLayout>
+        <!-- Produto Editado Por -->
+
+        <!-- Data de Edição do Produto -->
+        <LinearLayout
+            android:layout_margin="@dimen/text_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data da edição:"/>
+
+            <TextView
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_activity_edit_date"/>
+
+
+
+        </LinearLayout>
+        <!-- Data dde Edição do Produto -->
+
+
+    </LinearLayout>
+
+</ScrollView>

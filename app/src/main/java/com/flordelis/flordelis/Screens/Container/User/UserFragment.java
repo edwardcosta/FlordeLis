@@ -19,12 +19,16 @@ public class UserFragment extends Fragment {
 
     private View parentView;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         parentView = inflater.inflate(R.layout.fragment_user,container,false);
-
-        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
 
         return parentView;

@@ -18,15 +18,22 @@ public class ProductFragment extends Fragment {
 
     private View parentView;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        }catch (NullPointerException  e){
+            e.printStackTrace();
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         parentView = inflater.inflate(R.layout.fragment_product,container,false);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
-
-
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return parentView;
     }
 
     @Override

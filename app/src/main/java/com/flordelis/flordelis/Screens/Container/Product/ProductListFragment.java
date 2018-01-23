@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
-import com.flordelis.flordelis.Screens.Container.Product.ProductFragment;
 import com.flordelis.flordelis.Utils.Product.ProductAdapter;
 
 import java.util.ArrayList;
@@ -42,18 +41,21 @@ public class ProductListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Product p1 = new Product();
+        p1.setId("1");
         p1.setProductName("Produto Teste 1");
         List<String> img1 = new ArrayList<>();
         img1.add("www.redparts.com.br/wp-content/uploads/produto_teste.jpg");
         p1.setImages(img1);
 
         Product p2 = new Product();
+        p2.setId("2");
         p2.setProductName("Produto Teste 2");
         List<String> img2 = new ArrayList<>();
         img2.add("http://www.infostore.com.br/Assets/Produtos/SuperZoom/produto_teste_635859432774890946.jpg");
         p2.setImages(img2);
 
         Product p3 = new Product();
+        p3.setId("3");
         p3.setProductName("Produto Teste 3");
 
         products.add(p1);
