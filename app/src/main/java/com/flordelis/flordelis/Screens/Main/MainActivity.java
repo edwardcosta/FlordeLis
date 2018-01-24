@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private Toolbar toolbar;
     private Toolbar searchtollbar;
-    private Spinner spinner;
     Fragment fragment;
 
     private SimpleDraweeView _userImg;
@@ -70,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         _userImg = (SimpleDraweeView) toolbar.findViewById(R.id.activity_main_user_img);
-        spinner = (Spinner) toolbar.findViewById(R.id.activity_main_spinner);
 
         _userImg.setImageURI(user.getPhotoUrl());
 
@@ -96,18 +94,6 @@ public class MainActivity extends AppCompatActivity {
                         .makeSceneTransitionAnimation(MainActivity.this, _userImg, "user_image");
                 // start the new activity
                 startActivity(intent, options.toBundle());
-            }
-        });
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
     }

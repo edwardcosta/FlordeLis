@@ -8,6 +8,7 @@ import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
 import com.flordelis.flordelis.Utils.SwipeToAction;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.List;
 
@@ -48,8 +49,8 @@ public class ProductHolder extends SwipeToAction.ViewHolder implements View.OnCl
                 _title.setText(product.getProductName());
             if(product.getId() != null && !product.getId().isEmpty())
                 _id.setText(product.getId());
-            if(product.getSalePrice() != null && !product.getSalePrice().isEmpty()){
-                String price = NumberFormat.getCurrencyInstance().format(product.getSalePrice());
+            if(product.getSellPrice() != null && !product.getSellPrice().isEmpty()){
+                String price = NumberFormat.getCurrencyInstance().format(Float.parseFloat(product.getSellPrice()));
                 _price.setText(price);
             }
 

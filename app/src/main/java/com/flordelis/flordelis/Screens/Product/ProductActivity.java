@@ -25,6 +25,8 @@ import com.google.android.gms.tasks.Task;
 
 import org.w3c.dom.Text;
 
+import java.text.NumberFormat;
+
 /**
  * Created by Sala on 23/01/2018.
  */
@@ -115,8 +117,10 @@ public class ProductActivity extends AppCompatActivity {
         if(product != null){
             _name.setText(product.getProductName());
             _id.setText(product.getId());
-            _buyed_price.setText(product.getBuyedPrice());
-            _sell_price.setText(product.getSalePrice());
+            String buyed_price = NumberFormat.getCurrencyInstance().format(Float.parseFloat(product.getBuyedPrice()));
+            _buyed_price.setText(buyed_price);
+            String sell_price = NumberFormat.getCurrencyInstance().format(Float.parseFloat(product.getSellPrice()));
+            _sell_price.setText(sell_price);
             _situation.setText(product.getSituation());
             _quantity.setText(String.valueOf(product.getQuantity()));
             _color.setText(product.getColor());
