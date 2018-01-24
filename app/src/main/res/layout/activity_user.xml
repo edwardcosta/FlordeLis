@@ -8,18 +8,17 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/edit_profile_relative_layout"
         android:layout_width="match_parent"
         android:layout_height="150sp">
 
         <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/fragment_user_background_img"
+            android:id="@+id/activity_user_back_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:transitionName="user_image"
-            android:id="@+id/user_actitivy_user_image"
+            android:id="@+id/actitivy_user_image"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_width="100dp"
@@ -43,6 +42,7 @@
             android:paddingRight="24dp">
 
             <TextView
+                android:id="@+id/activity_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_large_size"
@@ -50,6 +50,7 @@
                 android:text="Nome"/>
 
             <TextView
+                android:id="@+id/activity_user_email"
                 android:layout_marginTop="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,6 +64,7 @@
                 android:gravity="center_horizontal">
 
                 <TextView
+                    android:id="@+id/activity_user_phone"
                     android:layout_marginTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,6 +72,7 @@
                     android:text="Telefone"/>
 
                 <TextView
+                    android:id="@+id/activity_user_cellphone"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="8dp"
                     android:layout_width="wrap_content"
@@ -78,33 +81,6 @@
                     android:text="Celular"/>
 
             </LinearLayout>
-
-            <android.support.v7.widget.AppCompatButton
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="12dp"
-                android:padding="12dp"
-                android:id="@+id/edit_profile_button_change_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Alterar Senha"/>
-
-            <android.support.v7.widget.AppCompatButton
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:padding="12dp"
-                android:id="@+id/edit_profile_user_button_edit_save"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Editar Perfil"/>
-
-            <android.support.v7.widget.AppCompatButton
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp"
-                android:padding="12dp"
-                android:id="@+id/edit_profile_user_delete_account"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Deletar conta"/>
 
         </LinearLayout>
 

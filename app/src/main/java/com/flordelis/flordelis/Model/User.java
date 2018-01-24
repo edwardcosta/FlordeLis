@@ -1,10 +1,12 @@
 package com.flordelis.flordelis.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by Sala on 19/01/2018.
  */
 
-public class User {
+public class User implements Serializable {
 
     private String displayName;
     private String email;
@@ -12,7 +14,7 @@ public class User {
     private String telefone;
     private String celular;
     private String status;
-    private String mainImage;
+    private String backImage;
 
     public boolean isAdmin() {
         return this.admin;
@@ -30,8 +32,8 @@ public class User {
         return this.status;
     }
 
-    public String getMainImage(){
-        return this.mainImage;
+    public String getBackImage(){
+        return this.backImage;
     }
 
     public String getDisplayName(){
@@ -50,8 +52,8 @@ public class User {
         this.displayName = displayName;
     }
 
-    public void setMainImage(String mainimage){
-        this.mainImage = mainimage;
+    public void setBackImage(String mainimage){
+        this.backImage = mainimage;
     }
 
     public void setCelular(String celular){
