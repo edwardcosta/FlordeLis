@@ -26,7 +26,7 @@
             android:paddingStart="12dp" />
 
         <com.facebook.drawee.view.SimpleDraweeView
-            android:transitionName="user_img"
+            android:transitionName="user_image"
             android:id="@+id/user_actitivy_user_image"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
