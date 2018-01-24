@@ -35,9 +35,12 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Sala on 19/01/2018.
@@ -112,12 +115,32 @@ public class ProductListFragment extends Fragment {
 
         swipeToAction = new SwipeToAction(recyclerView, new SwipeToAction.SwipeListener<Product>() {
             @Override
-            public boolean swipeLeft(Product itemData) {
+            public boolean swipeLeft(Product itemData, SwipeToAction.ViewHolder viewHolder) {
+                products.remove(itemData);
+                final Product _itemData = itemData;
+                final SwipeToAction.ViewHolder _viewHolder = viewHolder;
+                Map<String, Object> data = new HashMap<>();
+                data.put("situation", ProductValues.PRODUCT_SITUATION_DELETED);
+                db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
+                        .document(_itemData.getId())
+                        .set(data, SetOptions.merge());
+                productAdapter.notifyItemRemoved(_viewHolder.getAdapterPosition());
+                productAdapter.notifyDataSetChanged();
+                onRefreshContent();
                 Snackbar mySnackbar = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
                         "Deletado", Snackbar.LENGTH_LONG);
                 mySnackbar.setAction("Desfazer", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        products.add(_itemData);
+                        Map<String, Object> data = new HashMap<>();
+                        data.put("situation", ProductValues.PRODUCT_SITUATION_ACTIVE);
+                        db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
+                                .document(_itemData.getId())
+                                .set(data, SetOptions.merge());
+                        productAdapter.notifyItemInserted(_viewHolder.getAdapterPosition());
+                        productAdapter.notifyDataSetChanged();
+                        onRefreshContent();
                         Snackbar snackbar1 = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
                                 "Desfeito", Snackbar.LENGTH_SHORT);
                         snackbar1.show();
@@ -128,12 +151,32 @@ public class ProductListFragment extends Fragment {
             }
 
             @Override
-            public boolean swipeRight(Product itemData) {
+            public boolean swipeRight(Product itemData, SwipeToAction.ViewHolder viewHolder) {
+                products.remove(itemData);
+                final Product _itemData = itemData;
+                final SwipeToAction.ViewHolder _viewHolder = viewHolder;
+                Map<String, Object> data = new HashMap<>();
+                data.put("situation", ProductValues.PRODUCT_SITUATION_SOLD);
+                db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
+                        .document(_itemData.getId())
+                        .set(data, SetOptions.merge());
+                productAdapter.notifyItemRemoved(_viewHolder.getAdapterPosition());
+                productAdapter.notifyDataSetChanged();
+                onRefreshContent();
                 Snackbar mySnackbar = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
                         "Vendido", Snackbar.LENGTH_LONG);
                 mySnackbar.setAction("Desfazer", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        products.add(_itemData);
+                        Map<String, Object> data = new HashMap<>();
+                        data.put("situation", ProductValues.PRODUCT_SITUATION_ACTIVE);
+                        db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
+                                .document(_itemData.getId())
+                                .set(data, SetOptions.merge());
+                        productAdapter.notifyItemInserted(_viewHolder.getAdapterPosition());
+                        productAdapter.notifyDataSetChanged();
+                        onRefreshContent();
                         Snackbar snackbar1 = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
                                 "Desfeito", Snackbar.LENGTH_SHORT);
                         snackbar1.show();

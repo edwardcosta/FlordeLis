@@ -289,7 +289,7 @@ public class SwipeToAction {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         runningAnimationsOn.remove(animated);
-                        if (swipeListener.swipeRight(touchedViewHolder.getItemData())) {
+                        if (swipeListener.swipeRight(touchedViewHolder.getItemData(),touchedViewHolder)) {
                             resetPosition();
                         } else {
                             checkQueue();
@@ -326,7 +326,7 @@ public class SwipeToAction {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         runningAnimationsOn.remove(animated);
-                        if (swipeListener.swipeLeft(touchedViewHolder.getItemData())) {
+                        if (swipeListener.swipeLeft(touchedViewHolder.getItemData(),touchedViewHolder)) {
                             resetPosition();
                         } else {
                             checkQueue();
@@ -395,8 +395,8 @@ public class SwipeToAction {
     /** Public interfaces & classes */
 
     public interface SwipeListener<T extends Object> {
-        boolean swipeLeft(T itemData);
-        boolean swipeRight(T itemData);
+        boolean swipeLeft(T itemData, ViewHolder viewHolder);
+        boolean swipeRight(T itemData, ViewHolder viewHolder);
         void onClick(T itemData, View view);
         void onLongClick(T itemData, View view);
     }
