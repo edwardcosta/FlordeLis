@@ -16,7 +16,6 @@ public class Product implements Serializable{
     private String productName;
     private String buyedPrice;
     private String sellPrice;
-    private int quantity;
     private String color;
     private boolean bbSize;
     private String size;
@@ -69,10 +68,6 @@ public class Product implements Serializable{
 
     public String getSellPrice() {
         return sellPrice;
-    }
-
-    public int getQuantity() {
-        return quantity;
     }
 
     public String getColor() {
@@ -141,10 +136,6 @@ public class Product implements Serializable{
 
     public void setSellPrice(String salePrice) {
         this.sellPrice = salePrice;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public void setColor(String color) {

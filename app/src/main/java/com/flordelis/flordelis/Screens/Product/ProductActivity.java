@@ -42,7 +42,6 @@ public class ProductActivity extends AppCompatActivity {
     private TextView _buyed_price;
     private TextView _sell_price;
     private TextView _situation;
-    private TextView _quantity;
     private TextView _color;
     private TextView _size;
     private TextView _provider;
@@ -74,7 +73,6 @@ public class ProductActivity extends AppCompatActivity {
         _buyed_price = findViewById(R.id.activity_product_buyed_price);
         _sell_price = findViewById(R.id.activity_product_sell_price);
         _situation = findViewById(R.id.activity_product_situation);
-        _quantity = findViewById(R.id.activity_product_quantity);
         _color = findViewById(R.id.activity_product_color);
         _size = findViewById(R.id.activity_product_size);
         _provider = findViewById(R.id.activity_product_provider);
@@ -122,7 +120,6 @@ public class ProductActivity extends AppCompatActivity {
             String sell_price = NumberFormat.getCurrencyInstance().format(Float.parseFloat(product.getSellPrice()));
             _sell_price.setText(sell_price);
             _situation.setText(product.getSituation());
-            _quantity.setText(String.valueOf(product.getQuantity()));
             _color.setText(product.getColor());
             _size.setText(product.getSize());
             _provider.setText(product.getProviderName());
