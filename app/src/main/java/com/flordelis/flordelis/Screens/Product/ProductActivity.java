@@ -1,15 +1,27 @@
 package com.flordelis.flordelis.Screens.Product;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.firebase.ui.auth.AuthUI;
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
+import com.flordelis.flordelis.Screens.Authentication.LoginActivity;
+import com.flordelis.flordelis.Screens.User.UserActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import org.w3c.dom.Text;
 
@@ -18,6 +30,8 @@ import org.w3c.dom.Text;
  */
 
 public class ProductActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
 
     private Product product;
     private SimpleDraweeView _img;
@@ -44,6 +58,13 @@ public class ProductActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
+
+        toolbar = (Toolbar) findViewById(R.id.activity_product_toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        findViewById(R.id.activity_product_appbar).bringToFront();
 
         _img = findViewById(R.id.activity_product_image);
         _name = findViewById(R.id.activity_product_name);
@@ -110,6 +131,24 @@ public class ProductActivity extends AppCompatActivity {
             _deleted_date.setText(String.valueOf(product.getDatetimeDeleted()));
             _sold_by.setText(product.getSoldBy());
             _sold_date.setText(String.valueOf(product.getDatetimeSold()));
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_product, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_edit_product:
+                Toast.makeText(this, "Editar Produto clicado", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

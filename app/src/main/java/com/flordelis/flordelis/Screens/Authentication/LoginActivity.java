@@ -63,9 +63,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 // ...
-            } else {
+            } else if(response != null){
                 // Sign in failed, check response for error code
-
                 if (response.getErrorCode() == ErrorCodes.NO_NETWORK) {
 
 
@@ -75,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 }
+            } else {
                 // User pressed back button
                 startActivityForResult(
                         AuthUI.getInstance()

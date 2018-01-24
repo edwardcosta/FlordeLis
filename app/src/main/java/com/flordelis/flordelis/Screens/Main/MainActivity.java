@@ -34,10 +34,14 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.R;
 import com.flordelis.flordelis.Screens.Product.ProductListFragment;
 import com.flordelis.flordelis.Screens.User.UserActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FirebaseUser user;
 
     private FragmentManager fragmentManager;
     private Toolbar toolbar;
@@ -57,14 +61,18 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
         setSearchtollbar();
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
         _userImg = (SimpleDraweeView) toolbar.findViewById(R.id.activity_main_user_img);
         spinner = (Spinner) toolbar.findViewById(R.id.activity_main_spinner);
+
+        _userImg.setImageURI(user.getPhotoUrl());
 
         fragmentManager = getSupportFragmentManager();
 
@@ -102,21 +110,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        /*_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AuthUI.getInstance()
-                        .signOut(MainActivity.this)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
-            }
-       });*/
     }
 
     @Override

@@ -20,9 +20,17 @@
         <activity android:name=".Screens.Main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Screens.User.UserActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Screens.Main.MainActivity" />
+        </activity>
         <activity android:name=".Screens.Product.ProductActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Screens.Main.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
