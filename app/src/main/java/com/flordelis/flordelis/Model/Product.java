@@ -11,7 +11,8 @@ public class Product implements Serializable{
     private String id;
     private String addedBy;
     private String editedBy;
-    private String vendor;
+    private String deletedBy;
+    private String soldBy;
     private String productName;
     private String buyedPrice;
     private String salePrice;
@@ -48,10 +49,6 @@ public class Product implements Serializable{
 
     public String getEditedBy() {
         return editedBy;
-    }
-
-    public String getVendor() {
-        return vendor;
     }
 
     public long getDatetimeEdited() {
@@ -126,10 +123,6 @@ public class Product implements Serializable{
         this.editedBy = editedBy;
     }
 
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
-
     public void setDatetimeEdited(long datetimeEdited) {
         this.datetimeEdited = datetimeEdited;
     }
@@ -180,5 +173,21 @@ public class Product implements Serializable{
 
     public void setImages(List<String> images) {
         this.images = images;
+    }
+
+    public String getDeletedBy() {
+        return deletedBy;
+    }
+
+    public void setDeletedBy(String deletedBy) {
+        this.deletedBy = deletedBy;
+    }
+
+    public String getSoldBy() {
+        return soldBy;
+    }
+
+    public void setSoldBy(String soldBy) {
+        this.soldBy = soldBy;
     }
 }

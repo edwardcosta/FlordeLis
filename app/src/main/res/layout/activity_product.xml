@@ -28,12 +28,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp"
+                android:padding="16dp"
                 android:orientation="vertical">
 
                 <!-- Name -->
                 <TextView
-                    android:id="@+id/activity_product_product_name"
+                    android:id="@+id/activity_product_name"
                     android:textSize="@dimen/text_large_size"
                     android:textColor="@color/colorTextPrimary"
                     android:textStyle="bold"
@@ -43,6 +43,7 @@
 
                 <!-- ID -->
                 <TextView
+                    android:id="@+id/activity_product_id"
                     android:textSize="@dimen/text_small_size"
                     android:textColor="@color/colorTextSecondary"
                     android:layout_width="wrap_content"
@@ -57,7 +58,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-
+                        android:id="@+id/activity_product_buyed_price"
                         android:textSize="@dimen/text_large_size"
                         android:textColor="@color/red_80"
                         android:layout_width="wrap_content"
@@ -65,6 +66,7 @@
                         android:text="Preço de compra"/>
 
                     <TextView
+                        android:id="@+id/activity_product_sell_price"
                         android:layout_marginLeft="4dp"
                         android:textSize="@dimen/text_large_size"
                         android:textColor="@color/colorTextPrimary"
@@ -81,6 +83,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/activity_product_situation"
                         android:textSize="@dimen/text_large_size"
                         android:textColor="@color/colorTextPrimary"
                         android:layout_width="wrap_content"
@@ -88,6 +91,7 @@
                         android:text="Situação"/>
 
                     <TextView
+                        android:id="@+id/activity_product_quantity"
                         android:layout_marginLeft="4dp"
                         android:textSize="@dimen/text_large_size"
                         android:textColor="@color/colorTextPrimary"
@@ -116,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="8dp">
+                android:padding="16dp">
 
                 <TextView
                     android:textSize="@dimen/text_large_size"
@@ -126,6 +130,7 @@
                     android:text="Cor:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_color"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
@@ -148,6 +153,7 @@
                     android:text="Tamanho:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_size"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
@@ -170,6 +176,7 @@
                     android:text="Fornecedor:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_provider"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
@@ -191,7 +198,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:padding="8dp"
+                android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -205,6 +212,7 @@
                     android:text="Descrição:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_description"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
@@ -227,7 +235,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:padding="8dp"
+                android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -241,6 +249,7 @@
                     android:text="Adicinado por:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_added_by"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
@@ -263,6 +272,7 @@
                     android:text="Data da Adição:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_added_date"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
@@ -285,6 +295,7 @@
                     android:text="Editado por:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_edited_by"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
@@ -307,6 +318,7 @@
                     android:text="Data da edição:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_edited_date"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
@@ -329,6 +341,7 @@
                     android:text="Deletado por:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_deleted_by"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
@@ -351,12 +364,59 @@
                     android:text="Data que foi deletado:"/>
 
                 <TextView
+                    android:id="@+id/activity_product_deleted_date"
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/colorTextSecondary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Data"/>
+
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:background="@color/colorDivider"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vendido por:"/>
+
+                <TextView
+                    android:id="@+id/activity_product_sold_by"
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome"/>
+
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:background="@color/colorDivider"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data que foi vendido:"/>
+
+                <TextView
+                    android:id="@+id/activity_product_sold_date"
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data que foi vendido"/>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
