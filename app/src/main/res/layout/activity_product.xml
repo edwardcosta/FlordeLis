@@ -17,494 +17,349 @@
             android:id="@+id/activity_product_image"
             android:layout_width="match_parent"
             android:layout_height="380dp"
-            app:placeholderImage="@drawable/no_img"/>
-
-        <!-- ID do Produto -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="id:"/>
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_atcivity_id"/>
-
-
-        </LinearLayout>
-        <!-- ID do Produto -->
-
-        <!-- Situação do Produto -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Situação:"/>
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_atcivity_situation"/>
-
-
-        </LinearLayout>
-        <!-- Situação do Produto -->
+            app:placeholderImage="@drawable/no_product_img"/>
 
         <!-- Nome do Produto -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
+        <android.support.v7.widget.CardView
+            android:elevation="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Produto:"/>
-
-            <EditText
-                android:inputType="textAutoCorrect|textCapCharacters"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_name"/>
-
-
-        </LinearLayout>
-        <!-- Nome do Produto -->
-
-        <!-- Preço de Custo do Produto -->
-        <LinearLayout
-            android:id="@+id/product_activity_buyed_price_layout"
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Preço de compra:"/>
-
-            <EditText
-                android:inputType="numberDecimal"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_buyed_price"/>
-
-
-        </LinearLayout>
-        <!-- Preço de Custo do Produto -->
-
-        <!-- Preço de Venda do Produto -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Preço de Venda:"/>
-
-            <EditText
-                android:inputType="numberDecimal"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_sale_price"/>
-
-
-        </LinearLayout>
-        <!-- Preço de Venda do Produto -->
-
-        <!-- Quantidade do Produto -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Quantidade:"/>
-
-            <EditText
-                android:inputType="number"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_quantity"/>
-
-
-        </LinearLayout>
-        <!-- Quantidade do Produto -->
-
-        <!-- Cor do Produto -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cor:"/>
-
-            <AutoCompleteTextView
-                android:inputType="textAutoComplete|textAutoCorrect"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_color"/>
-
-
-        </LinearLayout>
-        <!-- Cor do Produto -->
-
-        <!-- Tamamho do Produto Viewer -->
-        <LinearLayout
-            android:id="@+id/product_activity_size_viewer_layout"
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tamanho:"/>
-
-            <EditText
-                android:inputType="textAutoCorrect|textCapCharacters"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_size"/>
-
-
-        </LinearLayout>
-        <!-- Tamanho do Produto Viewer -->
-
-        <!-- Tamanho do Produto Choicer -->
-        <LinearLayout
-            android:id="@+id/product_activity_size_chooser_layout"
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <!-- Type Chooser -->
             <LinearLayout
-                android:layout_margin="@dimen/text_margin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:orientation="vertical">
 
+                <!-- Name -->
                 <TextView
+                    android:id="@+id/activity_product_product_name"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tamanho"
-                    android:textSize="@dimen/text_large_size"
-                    android:textColor="@color/colorTextPrimary" />
+                    android:text="Produto"/>
 
-                <Spinner
-                    android:id="@+id/product_activity_size_type_chooser_spinner"
+                <!-- ID -->
+                <TextView
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="id"/>
+
+                <!-- Prices -->
+                <LinearLayout
+                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <!-- Type Chooser -->
-
-            <!-- Padrão Choice -->
-            <LinearLayout
-                android:layout_margin="@dimen/text_margin"
-                android:id="@+id/product_activity_default_choice_type_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_large_size"
-                    android:textColor="@color/colorTextPrimary"
-                    android:text="Babylook"
-                    android:layout_marginEnd="8dp"/>
+                    android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/product_activity_size_bb_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    <TextView
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_large_size"
-                    android:textColor="@color/colorTextPrimary"
-                    android:text="Tamanho:"
-                    android:layout_marginEnd="8dp"/>
+                        android:textSize="@dimen/text_large_size"
+                        android:textColor="@color/red_80"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Preço de compra"/>
 
-                <Spinner
-                    android:id="@+id/product_activity_size_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <!-- Padrão Choice -->
+                    <TextView
+                        android:layout_marginLeft="4dp"
+                        android:textSize="@dimen/text_large_size"
+                        android:textColor="@color/colorTextPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Preço de Venda"/>
 
-            <!-- Numeração Choice -->
-            <LinearLayout
-                android:id="@+id/product_activity_numeration_choice_type_layout"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_large_size"
-                    android:textColor="@color/colorTextPrimary"
-                    android:text="Numeração"/>
+                </LinearLayout>
 
-                <Spinner
-                    android:id="@+id/product_activity_numeration_spinner"
+                <LinearLayout
+                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="@dimen/text_large_size"
+                        android:textColor="@color/colorTextPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Situação"/>
+
+                    <TextView
+                        android:layout_marginLeft="4dp"
+                        android:textSize="@dimen/text_large_size"
+                        android:textColor="@color/colorTextPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quantidade"/>
+
+                </LinearLayout>
+
             </LinearLayout>
-            <!-- Numeração Choice -->
 
-        </LinearLayout>
-        <!-- Tamanho do Produto Choicer -->
 
-        <!-- Fornecedor -->
-        <LinearLayout
-            android:layout_margin="8dp"
+        </android.support.v7.widget.CardView>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/divider_size_large"
+            android:background="@color/lighter_gray"/>
 
-            <TextView
-                android:layout_margin="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:text="Forncedor:"/>
+        <android.support.v7.widget.CardView
+            android:elevation="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/product_activity_provider_label"
-                android:layout_margin="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"/>
-
-            <Spinner
-                android:id="@+id/product_activity_provider_spinner"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
-        </LinearLayout>
-        <!-- Fornecedor -->
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-        <!-- Descrição do Produto -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
+                <TextView
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cor:"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cor"/>
+
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:background="@color/colorDivider"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tamanho:"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tamanho"/>
+
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:background="@color/colorDivider"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fornecedor:"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fornecedor"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="@dimen/divider_size_large"
+            android:background="@color/lighter_gray"/>
 
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descrição"/>
+        <android.support.v7.widget.CardView
+            android:elevation="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <EditText
-                android:inputType="textMultiLine|textAutoCorrect"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
+            <LinearLayout
+                android:padding="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_description"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descrição:"/>
 
-        </LinearLayout>
-        <!-- Descrição do Produto -->
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descrição"/>
 
-        <!-- Produto Adicionado Por -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/divider_size_large"
+            android:background="@color/lighter_gray"/>
 
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Adicionado por:"/>
-
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_added_by"/>
-
-
-        </LinearLayout>
-        <!-- Produto Adicionado Por -->
-
-        <!-- Data da Adição do Produto -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
+        <android.support.v7.widget.CardView
+            android:elevation="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Data da criação:"/>
+            <LinearLayout
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_add_date"/>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adicinado por:"/>
 
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome"/>
 
-        </LinearLayout>
-        <!-- Data da Adição do Produto -->
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:background="@color/colorDivider"/>
 
-        <!-- Produto Editado Por -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data da Adição:"/>
 
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Editado por:"/>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data"/>
 
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_edited_by"/>
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:background="@color/colorDivider"/>
 
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editado por:"/>
 
-        </LinearLayout>
-        <!-- Produto Editado Por -->
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome"/>
 
-        <!-- Data de Edição do Produto -->
-        <LinearLayout
-            android:layout_margin="@dimen/text_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:background="@color/colorDivider"/>
 
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_large_size"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Data da edição:"/>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data da edição:"/>
 
-            <TextView
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/colorTextSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/product_activity_edit_date"/>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data"/>
 
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:background="@color/colorDivider"/>
 
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deletado por:"/>
 
-        </LinearLayout>
-        <!-- Data dde Edição do Produto -->
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome"/>
+
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:background="@color/colorDivider"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data que foi deletado:"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
 
     </LinearLayout>

@@ -32,7 +32,7 @@
             android:layout_centerHorizontal="true"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:placeholderImage="@drawable/user_img"/>
+            app:placeholderImage="@drawable/no_user_img"/>
 
     </RelativeLayout>
 

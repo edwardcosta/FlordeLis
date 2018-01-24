@@ -55,7 +55,7 @@
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
-            app:placeholderImage="@drawable/no_img" />
+            app:placeholderImage="@drawable/no_product_img" />
 
         <LinearLayout
             android:padding="16dp"

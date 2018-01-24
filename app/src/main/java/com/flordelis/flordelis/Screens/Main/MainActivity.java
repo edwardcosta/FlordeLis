@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, UserActivity.class);
                 _userImg.setLegacyVisibilityHandlingEnabled(true);
                 ActivityOptions options = ActivityOptions
-                        .makeSceneTransitionAnimation(MainActivity.this, _userImg, "user_img");
+                        .makeSceneTransitionAnimation(MainActivity.this, _userImg, "no_user_img");
                 // start the new activity
                 startActivity(intent, options.toBundle());
             }

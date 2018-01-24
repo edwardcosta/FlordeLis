@@ -12,14 +12,14 @@
     <color name="colorTextSecondary">#757575</color>
     <color name="colorTextIcons">#FFFFFF</color>
 
-    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorDivider">#ECECEC</color>
 
     <color name="colorAdminPrimaryDark">#45a19e</color>
     <color name="colorAdminPrimaryLight">#b8e0df</color>
 
     <color name="black">#000000</color>
     <color name="black_semi_transparent">#B2000000</color>
-    <color name="lighter_gray">#e5e5e5</color>
+    <color name="lighter_gray">#f2f2f2</color>
     <color name="blue">#0000ff</color>
     <color name="blue_pressed">#8080ff</color>
     <color name="blue_semi_transparent">#805677fc</color>
