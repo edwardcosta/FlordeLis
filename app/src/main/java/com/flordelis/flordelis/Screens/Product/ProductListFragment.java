@@ -232,6 +232,7 @@ public class ProductListFragment extends Fragment {
     }
 
     private void onQuery(String query){
+        swipeRefreshLayout.setRefreshing(true);
         lastQuery = query;
         if(queryListener != null){
             queryListener.remove();
