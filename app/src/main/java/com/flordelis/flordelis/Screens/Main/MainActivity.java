@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -90,8 +91,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, UserActivity.class);
                 _userImg.setLegacyVisibilityHandlingEnabled(true);
+                ImageView _logo = findViewById(R.id.activity_main_logo);
                 ActivityOptions options = ActivityOptions
-                        .makeSceneTransitionAnimation(MainActivity.this, _userImg, "user_image");
+                        .makeSceneTransitionAnimation(MainActivity.this,
+                                Pair.create(((View)_userImg),"user_image"),
+                                Pair.create(((View)_logo),"logo_transition"));
                 // start the new activity
                 startActivity(intent, options.toBundle());
             }

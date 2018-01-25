@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/activity_user_appbar"
         android:elevation="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:background="@color/fui_transparent"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/activity_user_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@drawable/product_toolbar"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <RelativeLayout
@@ -27,6 +28,7 @@
 
                 <ImageView
                     android:id="@+id/actvity_main_logo"
+                    android:transitionName="logo_transition"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_width="90dp"
@@ -39,67 +41,74 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150sp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/activity_user_back_image"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:placeholderImage="@drawable/user_back"/>
+            android:layout_height="150sp">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:transitionName="user_image"
-            android:id="@+id/actitivy_user_image"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:roundAsCircle="true"
-            app:placeholderImage="@drawable/no_user_img"/>
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/activity_user_back_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:placeholderImage="@drawable/user_back"/>
 
-    </RelativeLayout>
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:transitionName="user_image"
+                android:id="@+id/actitivy_user_image"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:roundAsCircle="true"
+                app:placeholderImage="@drawable/no_user_img"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        </RelativeLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:paddingTop="56dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/activity_user_name"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large_size"
-                android:textStyle="bold"
-                android:text="Nome"/>
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:paddingTop="56dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp">
 
-            <TextView
-                android:id="@+id/activity_user_email"
-                android:layout_marginTop="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="Email"/>
+                <TextView
+                    android:id="@+id/activity_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_large_size"
+                    android:textStyle="bold"
+                    android:text="Nome"/>
 
-            <TextView
-                android:id="@+id/activity_user_phone"
-                android:layout_marginTop="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="Telefone"/>
+                <TextView
+                    android:id="@+id/activity_user_email"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size"
+                    android:text="Email"/>
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/activity_user_phone"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size"
+                    android:text="Telefone"/>
 
-    </ScrollView>
+            </LinearLayout>
 
-</LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>
