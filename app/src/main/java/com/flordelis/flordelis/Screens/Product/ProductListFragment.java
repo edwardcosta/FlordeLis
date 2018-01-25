@@ -25,8 +25,11 @@ import com.flordelis.flordelis.Screens.Main.MainActivity;
 import com.flordelis.flordelis.Utils.Product.ProductAdapter;
 import com.flordelis.flordelis.Utils.StaticValues.ProductValues;
 import com.flordelis.flordelis.Utils.SwipeToAction;
+import com.flordelis.flordelis.Utils.TimeStamp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -53,6 +56,7 @@ public class ProductListFragment extends Fragment {
     private Spinner spinner;
 
     private FirebaseFirestore db;
+    private FirebaseUser user;
     private ListenerRegistration queryListener;
 
     private RecyclerView recyclerView;
@@ -70,6 +74,7 @@ public class ProductListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         spinner = getActivity().findViewById(R.id.activity_main_spinner);
 
@@ -124,6 +129,8 @@ public class ProductListFragment extends Fragment {
                 final SwipeToAction.ViewHolder _viewHolder = viewHolder;
                 Map<String, Object> data = new HashMap<>();
                 data.put("situation", ProductValues.PRODUCT_SITUATION_DELETED);
+                data.put("datetimeDeleted", TimeStamp.getTimestamp());
+                data.put("deletedBy",user.getUid());
                 db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
                         .document(_itemData.getId())
                         .set(data, SetOptions.merge());
@@ -136,6 +143,8 @@ public class ProductListFragment extends Fragment {
                         products.add(_itemData);
                         Map<String, Object> data = new HashMap<>();
                         data.put("situation", ProductValues.PRODUCT_SITUATION_ACTIVE);
+                        data.put("datetimeDeleted", 0);
+                        data.put("deletedBy","");
                         db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
                                 .document(_itemData.getId())
                                 .set(data, SetOptions.merge());
@@ -156,6 +165,8 @@ public class ProductListFragment extends Fragment {
                 final SwipeToAction.ViewHolder _viewHolder = viewHolder;
                 Map<String, Object> data = new HashMap<>();
                 data.put("situation", ProductValues.PRODUCT_SITUATION_SOLD);
+                data.put("datetimeSold", TimeStamp.getTimestamp());
+                data.put("soldBy",user.getUid());
                 db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
                         .document(_itemData.getId())
                         .set(data, SetOptions.merge());
@@ -168,6 +179,8 @@ public class ProductListFragment extends Fragment {
                         products.add(_itemData);
                         Map<String, Object> data = new HashMap<>();
                         data.put("situation", ProductValues.PRODUCT_SITUATION_ACTIVE);
+                        data.put("datetimeSold", 0);
+                        data.put("soldBy","");
                         db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
                                 .document(_itemData.getId())
                                 .set(data, SetOptions.merge());
