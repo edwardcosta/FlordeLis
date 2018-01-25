@@ -4,10 +4,12 @@ package com.flordelis.flordelis.Model;
  *Created by Sala on 19/01/2018.
  */
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class Product implements Serializable{
+public class Product implements Serializable, Comparable<Product>{
     private String id;
     private String addedBy;
     private String editedBy;
@@ -180,5 +182,18 @@ public class Product implements Serializable{
 
     public void setSoldBy(String soldBy) {
         this.soldBy = soldBy;
+    }
+
+    @Override
+    public int compareTo(@NonNull Product product) {
+        if (getDatetimeCreated() < product.getDatetimeCreated()) {
+            return 1;
+        }
+        else if (getDatetimeCreated() >  product.getDatetimeCreated()) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
     }
 }

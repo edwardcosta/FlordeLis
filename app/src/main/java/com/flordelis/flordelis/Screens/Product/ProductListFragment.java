@@ -38,6 +38,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +62,8 @@ public class ProductListFragment extends Fragment {
     private FloatingActionButton fab;
 
     private List<Product> products = new ArrayList<>();
+
+    private String lastQuery;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -124,8 +127,6 @@ public class ProductListFragment extends Fragment {
                 db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
                         .document(_itemData.getId())
                         .set(data, SetOptions.merge());
-                productAdapter.notifyItemRemoved(_viewHolder.getAdapterPosition());
-                productAdapter.notifyDataSetChanged();
                 onRefreshContent();
                 Snackbar mySnackbar = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
                         "Deletado", Snackbar.LENGTH_LONG);
@@ -138,8 +139,6 @@ public class ProductListFragment extends Fragment {
                         db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
                                 .document(_itemData.getId())
                                 .set(data, SetOptions.merge());
-                        productAdapter.notifyItemInserted(_viewHolder.getAdapterPosition());
-                        productAdapter.notifyDataSetChanged();
                         onRefreshContent();
                         Snackbar snackbar1 = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
                                 "Desfeito", Snackbar.LENGTH_SHORT);
@@ -160,8 +159,6 @@ public class ProductListFragment extends Fragment {
                 db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
                         .document(_itemData.getId())
                         .set(data, SetOptions.merge());
-                productAdapter.notifyItemRemoved(_viewHolder.getAdapterPosition());
-                productAdapter.notifyDataSetChanged();
                 onRefreshContent();
                 Snackbar mySnackbar = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
                         "Vendido", Snackbar.LENGTH_LONG);
@@ -174,8 +171,6 @@ public class ProductListFragment extends Fragment {
                         db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
                                 .document(_itemData.getId())
                                 .set(data, SetOptions.merge());
-                        productAdapter.notifyItemInserted(_viewHolder.getAdapterPosition());
-                        productAdapter.notifyDataSetChanged();
                         onRefreshContent();
                         Snackbar snackbar1 = Snackbar.make(parentView.findViewById(R.id.fragment_coordinator_layout),
                                 "Desfeito", Snackbar.LENGTH_SHORT);
@@ -225,6 +220,7 @@ public class ProductListFragment extends Fragment {
     }
 
     private void onQuery(String query){
+        lastQuery = query;
         if(queryListener != null){
             queryListener.remove();
         }
@@ -249,6 +245,7 @@ public class ProductListFragment extends Fragment {
     }
 
     private void onRefreshContent(){
+        Collections.sort(products);
         productAdapter = new ProductAdapter(this.getContext(), products);
         recyclerView.setAdapter(productAdapter);
         swipeRefreshLayout.setRefreshing(false);
