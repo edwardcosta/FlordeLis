@@ -21,7 +21,6 @@ import android.widget.Spinner;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
-import com.flordelis.flordelis.Screens.Main.MainActivity;
 import com.flordelis.flordelis.Utils.Product.ProductAdapter;
 import com.flordelis.flordelis.Utils.StaticValues.ProductValues;
 import com.flordelis.flordelis.Utils.SwipeToAction;
@@ -30,13 +29,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
@@ -66,6 +61,10 @@ public class ProductListFragment extends Fragment {
     private FloatingActionButton fab;
 
     private List<Product> products = new ArrayList<>();
+    private List<Product> queryColor = new ArrayList<>();
+    private List<Product> queryProduct = new ArrayList<>();
+    private List<Product> queryID = new ArrayList<>();
+
 
     private String lastQuery;
 
@@ -262,5 +261,83 @@ public class ProductListFragment extends Fragment {
         productAdapter = new ProductAdapter(this.getContext(), products);
         recyclerView.setAdapter(productAdapter);
         swipeRefreshLayout.setRefreshing(false);
+    }
+
+    public void onSearch(String _search){
+        String search = _search.trim();
+
+        if(!search.isEmpty()) {
+            int strlen = search.length();
+            String frontString = search.substring(0,strlen - 1);
+            String finalString = search.substring(strlen - 1, search.length());
+
+            char c = finalString.charAt(0);
+            c++;
+
+            String endString = frontString + c;
+
+            queryColor.clear();
+            queryID.clear();
+            queryProduct.clear();
+            db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
+                    .whereGreaterThanOrEqualTo("id", search)
+                    .whereLessThan("id",endString)
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            Product product = document.toObject(Product.class);
+                            queryID.add(product);
+                        }
+                        showSearchResults();
+                    }
+                }
+            });
+            db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
+                    .whereGreaterThanOrEqualTo("productName", search)
+                    .whereLessThan("productName",endString)
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            Product product = document.toObject(Product.class);
+                            queryProduct.add(product);
+                        }
+                        showSearchResults();
+                    }
+                }
+            });
+            db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
+                    .whereGreaterThanOrEqualTo("color", search)
+                    .whereLessThan("color",endString)
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            Product product = document.toObject(Product.class);
+                            queryColor.add(product);
+                        }
+                        showSearchResults();
+                    }
+                }
+            });
+        }
+    }
+
+    public void onSearchCancel(){
+        onRefreshContent();
+    }
+
+    private void showSearchResults(){
+        List<Product> searchResult = new ArrayList<>();
+        searchResult.addAll(queryID);
+        searchResult.addAll(queryColor);
+        searchResult.addAll(queryProduct);
+
+        productAdapter = new ProductAdapter(this.getContext(), searchResult);
+        recyclerView.setAdapter(productAdapter);
     }
 }

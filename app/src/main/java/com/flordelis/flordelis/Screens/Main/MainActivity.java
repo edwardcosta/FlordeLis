@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private Toolbar toolbar;
     private Toolbar searchtollbar;
-    Fragment fragment;
+    private Fragment fragment;
 
     private SimpleDraweeView _userImg;
 
@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onMenuItemActionCollapse(MenuItem item) {
                     // Do something when collapsed
+                    ((ProductListFragment)fragment).onSearchCancel();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         circleReveal(R.id.searchtoolbar,1,true,false);
                     }
@@ -224,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
             public void callSearch(String query) {
                 //Do searching
+                ((ProductListFragment)fragment).onSearch(query);
                 Log.i("query", "" + query);
 
             }
