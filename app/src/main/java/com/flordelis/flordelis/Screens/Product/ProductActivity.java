@@ -10,18 +10,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.firebase.ui.auth.AuthUI;
 import com.flordelis.flordelis.Model.Product;
+import com.flordelis.flordelis.Model.User;
 import com.flordelis.flordelis.R;
 import com.flordelis.flordelis.Screens.Authentication.LoginActivity;
 import com.flordelis.flordelis.Screens.User.UserActivity;
+import com.flordelis.flordelis.Utils.StaticValues.ProductValues;
+import com.flordelis.flordelis.Utils.StaticValues.UserValues;
+import com.flordelis.flordelis.Utils.TimeStamp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
 
@@ -34,6 +42,8 @@ import java.text.NumberFormat;
 public class ProductActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+
+    FirebaseFirestore db;
 
     private Product product;
     private SimpleDraweeView _img;
@@ -48,10 +58,13 @@ public class ProductActivity extends AppCompatActivity {
     private TextView _description;
     private TextView _added_by;
     private TextView _added_date;
+    private LinearLayout _edited_layout;
     private TextView _edited_by;
     private TextView _edited_date;
+    private LinearLayout _deleted_layout;
     private TextView _deleted_by;
     private TextView _deleted_date;
+    private LinearLayout _sold_layout;
     private TextView _sold_by;
     private TextView _sold_date;
 
@@ -67,6 +80,8 @@ public class ProductActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         findViewById(R.id.activity_product_appbar).bringToFront();
 
+        db = FirebaseFirestore.getInstance();
+
         _img = findViewById(R.id.activity_product_image);
         _name = findViewById(R.id.activity_product_name);
         _id = findViewById(R.id.activity_product_id);
@@ -79,10 +94,13 @@ public class ProductActivity extends AppCompatActivity {
         _description = findViewById(R.id.activity_product_description);
         _added_by = findViewById(R.id.activity_product_added_by);
         _added_date = findViewById(R.id.activity_product_added_date);
+        _edited_layout = findViewById(R.id.activity_product_edited_layout);
         _edited_by = findViewById(R.id.activity_product_edited_by);
         _edited_date = findViewById(R.id.activity_product_edited_date);
+        _deleted_layout = findViewById(R.id.activity_product_deleted_layout);
         _deleted_by = findViewById(R.id.activity_product_deleted_by);
         _deleted_date = findViewById(R.id.activity_product_deleted_date);
+        _sold_layout = findViewById(R.id.activity_product_sold_layout);
         _sold_by = findViewById(R.id.activity_product_sold_by);
         _sold_date = findViewById(R.id.activity_product_sold_date);
 
@@ -125,13 +143,66 @@ public class ProductActivity extends AppCompatActivity {
             _provider.setText(product.getProviderName());
             _description.setText(product.getDescription());
             _added_by.setText(product.getAddedBy());
-            _added_date.setText(String.valueOf(product.getDatetimeCreated()));
-            _edited_by.setText(product.getEditedBy());
-            _edited_date.setText(String.valueOf(product.getDatetimeEdited()));
-            _deleted_by.setText(product.getDeletedBy());
-            _deleted_date.setText(String.valueOf(product.getDatetimeDeleted()));
-            _sold_by.setText(product.getSoldBy());
-            _sold_date.setText(String.valueOf(product.getDatetimeSold()));
+            db.collection(UserValues.USER_DATABASE_REFERENCE).document(product.getAddedBy())
+                    .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if(task.isSuccessful()){
+                        User user = task.getResult().toObject(User.class);
+                        _added_by.setText(user.getDisplayName());
+                    }
+                }
+            });
+            _added_date.setText(TimeStamp.getDateCurrentTimeZone(product.getDatetimeCreated()));
+            if(product.getDatetimeEdited() != 0){
+                _edited_layout.setVisibility(View.VISIBLE);
+                _edited_by.setText(product.getEditedBy());
+                db.collection(UserValues.USER_DATABASE_REFERENCE).document(product.getEditedBy())
+                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            User user = task.getResult().toObject(User.class);
+                            _edited_by.setText(user.getDisplayName());
+                        }
+                    }
+                });
+                _edited_date.setText(TimeStamp.getDateCurrentTimeZone(product.getDatetimeEdited()));
+            }
+            switch (product.getSituation()) {
+                case ProductValues.PRODUCT_SITUATION_SOLD:
+                    _sold_layout.setVisibility(View.VISIBLE);
+                    _sold_by.setText(product.getSoldBy());
+                    db.collection(UserValues.USER_DATABASE_REFERENCE).document(product.getSoldBy())
+                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.isSuccessful()){
+                                User user = task.getResult().toObject(User.class);
+                                _sold_by.setText(user.getDisplayName());
+                            }
+                        }
+                    });
+                    _sold_date.setText(TimeStamp.getDateCurrentTimeZone(product.getDatetimeSold()));
+                    break;
+                case ProductValues.PRODUCT_SITUATION_DELETED:
+                    _deleted_layout.setVisibility(View.VISIBLE);
+                    _deleted_by.setText(product.getDeletedBy());
+                    db.collection(UserValues.USER_DATABASE_REFERENCE).document(product.getDeletedBy())
+                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.isSuccessful()){
+                                User user = task.getResult().toObject(User.class);
+                                _deleted_by.setText(user.getDisplayName());
+                            }
+                        }
+                    });
+                    _deleted_date.setText(TimeStamp.getDateCurrentTimeZone(product.getDatetimeDeleted()));
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

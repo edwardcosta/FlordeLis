@@ -303,143 +303,170 @@
                         android:layout_height="wrap_content"
                         android:text="Data"/>
 
-                    <View
-                        android:layout_marginTop="8dp"
+                    <LinearLayout
+                        android:id="@+id/activity_product_edited_layout"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/divider_size"
-                        android:background="@color/colorDivider"/>
-
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_large_size"
-                        android:textColor="@color/colorTextPrimary"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Editado por:"/>
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/activity_product_edited_by"
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_size"
-                        android:textColor="@color/colorTextSecondary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nome"/>
+                        <View
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_size"
+                            android:background="@color/colorDivider"/>
 
-                    <View
-                        android:layout_marginTop="8dp"
+                        <TextView
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_large_size"
+                            android:textColor="@color/colorTextPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Editado por:"/>
+
+                        <TextView
+                            android:id="@+id/activity_product_edited_by"
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_size"
+                            android:textColor="@color/colorTextSecondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome"/>
+
+                        <View
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_size"
+                            android:background="@color/colorDivider"/>
+
+                        <TextView
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_large_size"
+                            android:textColor="@color/colorTextPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Data da edição:"/>
+
+                        <TextView
+                            android:id="@+id/activity_product_edited_date"
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_size"
+                            android:textColor="@color/colorTextSecondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Data"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activity_product_deleted_layout"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/divider_size"
-                        android:background="@color/colorDivider"/>
-
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_large_size"
-                        android:textColor="@color/colorTextPrimary"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Data da edição:"/>
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/activity_product_edited_date"
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_size"
-                        android:textColor="@color/colorTextSecondary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Data"/>
+                        <View
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_size"
+                            android:background="@color/colorDivider"/>
 
-                    <View
-                        android:layout_marginTop="8dp"
+                        <TextView
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_large_size"
+                            android:textColor="@color/colorTextPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Deletado por:"/>
+
+                        <TextView
+                            android:id="@+id/activity_product_deleted_by"
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_size"
+                            android:textColor="@color/colorTextSecondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome"/>
+
+                        <View
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_size"
+                            android:background="@color/colorDivider"/>
+
+                        <TextView
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_large_size"
+                            android:textColor="@color/colorTextPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Data que foi deletado:"/>
+
+                        <TextView
+                            android:id="@+id/activity_product_deleted_date"
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_size"
+                            android:textColor="@color/colorTextSecondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Data"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activity_product_sold_layout"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/divider_size"
-                        android:background="@color/colorDivider"/>
-
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_large_size"
-                        android:textColor="@color/colorTextPrimary"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Deletado por:"/>
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/activity_product_deleted_by"
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_size"
-                        android:textColor="@color/colorTextSecondary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nome"/>
+                        <View
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_size"
+                            android:background="@color/colorDivider"/>
 
-                    <View
-                        android:layout_marginTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/divider_size"
-                        android:background="@color/colorDivider"/>
+                        <TextView
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_large_size"
+                            android:textColor="@color/colorTextPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vendido por:"/>
 
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_large_size"
-                        android:textColor="@color/colorTextPrimary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Data que foi deletado:"/>
+                        <TextView
+                            android:id="@+id/activity_product_sold_by"
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_size"
+                            android:textColor="@color/colorTextSecondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome"/>
 
-                    <TextView
-                        android:id="@+id/activity_product_deleted_date"
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_size"
-                        android:textColor="@color/colorTextSecondary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Data"/>
+                        <View
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_size"
+                            android:background="@color/colorDivider"/>
 
-                    <View
-                        android:layout_marginTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/divider_size"
-                        android:background="@color/colorDivider"/>
+                        <TextView
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_large_size"
+                            android:textColor="@color/colorTextPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Data que foi vendido:"/>
 
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_large_size"
-                        android:textColor="@color/colorTextPrimary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Vendido por:"/>
+                        <TextView
+                            android:id="@+id/activity_product_sold_date"
+                            android:layout_marginTop="8dp"
+                            android:textSize="@dimen/text_size"
+                            android:textColor="@color/colorTextSecondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Data que foi vendido"/>
 
-                    <TextView
-                        android:id="@+id/activity_product_sold_by"
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_size"
-                        android:textColor="@color/colorTextSecondary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nome"/>
-
-                    <View
-                        android:layout_marginTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/divider_size"
-                        android:background="@color/colorDivider"/>
-
-                    <TextView
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_large_size"
-                        android:textColor="@color/colorTextPrimary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Data que foi vendido:"/>
-
-                    <TextView
-                        android:id="@+id/activity_product_sold_date"
-                        android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_size"
-                        android:textColor="@color/colorTextSecondary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Data que foi vendido"/>
+                    </LinearLayout>
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
