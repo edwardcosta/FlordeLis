@@ -22,18 +22,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.R;
-import com.flordelis.flordelis.Screens.Product.ProductListFragment;
+import com.flordelis.flordelis.Screens.Main.Fragment.ProductListFragment;
 import com.flordelis.flordelis.Screens.User.UserActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -77,14 +75,14 @@ public class MainActivity extends AppCompatActivity {
 
         final FragmentTransaction fragmentTransaction;
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragment = fragmentManager.findFragmentById(R.id.content);
+        fragment = fragmentManager.findFragmentById(R.id.activity_main_fragment);
 
         if (fragment != null) {
             fragmentTransaction.remove(fragment);
         }
 
         fragment = new ProductListFragment();
-        fragmentTransaction.add(R.id.content, fragment).commit();
+        fragmentTransaction.add(R.id.activity_main_fragment, fragment).commit();
 
         _userImg.setOnClickListener(new View.OnClickListener() {
             @Override

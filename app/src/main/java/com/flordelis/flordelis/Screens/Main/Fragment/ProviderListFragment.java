@@ -1,4 +1,4 @@
-package com.flordelis.flordelis.Screens.Provider;
+package com.flordelis.flordelis.Screens.Main.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

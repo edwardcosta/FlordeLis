@@ -1,4 +1,4 @@
-package com.flordelis.flordelis.Screens.Product;
+package com.flordelis.flordelis.Screens.Main.Fragment;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
+import com.flordelis.flordelis.Screens.Product.ProductActivity;
 import com.flordelis.flordelis.Utils.Product.ProductAdapter;
 import com.flordelis.flordelis.Utils.StaticValues.ProductValues;
 import com.flordelis.flordelis.Utils.SwipeToAction;
