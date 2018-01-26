@@ -219,6 +219,9 @@ public class ProductActivity extends AppCompatActivity {
             case R.id.action_edit_product:
                 Toast.makeText(this, "Editar Produto clicado", Toast.LENGTH_SHORT).show();
                 return true;
+            case android.R.id.home:
+                super.onBackPressed();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

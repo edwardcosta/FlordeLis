@@ -1,35 +1,26 @@
 package com.flordelis.flordelis.Screens.User;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.firebase.ui.auth.AuthUI;
 import com.flordelis.flordelis.Model.User;
 import com.flordelis.flordelis.R;
 import com.flordelis.flordelis.Screens.Authentication.LoginActivity;
-import com.flordelis.flordelis.Screens.Main.Fragment.ProductListFragment;
-import com.flordelis.flordelis.Screens.Main.MainActivity;
-import com.flordelis.flordelis.Screens.User.Fragments.UserEditFragment;
-import com.flordelis.flordelis.Screens.User.Fragments.UserFragment;
+import com.flordelis.flordelis.Screens.User.Fragment.UserEditFragment;
+import com.flordelis.flordelis.Screens.User.Fragment.UserFragment;
 import com.flordelis.flordelis.Utils.StaticValues.UserValues;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,6 +36,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class UserActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+
+    private MenuItem _editUser;
 
     private FirebaseFirestore db;
     private FirebaseUser user;
@@ -122,6 +115,7 @@ public class UserActivity extends AppCompatActivity {
     public void onBackPressed() {
         if(fragmentManager.findFragmentById(R.id.activity_user_fragment) instanceof UserEditFragment){
             fragmentManager.popBackStack();
+            _editUser.setVisible(true);
         } else {
             super.onBackPressed();
         }
@@ -149,6 +143,8 @@ public class UserActivity extends AppCompatActivity {
                         });
                 return true;
             case R.id.action_edit_user:
+                item.setVisible(false);
+                _editUser = item;
                 fragmentManager.beginTransaction()
                         .replace(R.id.activity_user_fragment,new UserEditFragment())
                         .addToBackStack(null)

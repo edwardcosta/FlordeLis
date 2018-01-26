@@ -1,4 +1,4 @@
-package com.flordelis.flordelis.Screens.User.Fragments;
+package com.flordelis.flordelis.Screens.User.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,11 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Created by Sala on 26/01/2018.
