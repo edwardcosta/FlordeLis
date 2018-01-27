@@ -27,6 +27,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -80,6 +81,10 @@ public class UserEditFragment extends Fragment {
         _delete = parentView.findViewById(R.id.fragment_edit_user_delete);
         _save = parentView.findViewById(R.id.fragment_edit_user_save);
 
+        _name.setText(user.getDisplayName());
+        _email.setText(user.getEmail());
+        _phone.setText(user.getPhoneNumber());
+
         _change_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,30 +124,41 @@ public class UserEditFragment extends Fragment {
     }
 
     private void onDeleteButton(){
-        AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
-                .setTitle("Deletar Conta")
-                .setMessage("Deletar a conta não pode ser desfeito. Deseja continuar?")
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+        SweetAlertDialog delete = new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE);
+        delete.setTitleText("Deseja deletar a conta?");
+        delete.setContentText("Deletar a conta nao pode ser desfeito. Deseja continuar?");
+        delete.setConfirmText("Sim").setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(final SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.setTitleText("Deletando Conta")
+                        .setContentText("")
+                        .changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
+                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onClick(final DialogInterface dialogInterface, final int i) {
-                        user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                dialogInterface.dismiss();
-                                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                                startActivity(intent);
-                                getActivity().finish();
-                            }
-                        });
+                    public void onComplete(@NonNull Task<Void> task) {
+                        sweetAlertDialog.setTitleText("Conta deletada")
+                                .setConfirmText("Ok")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                        startActivity(intent);
+                                        getActivity().finish();
+                                    }
+                                })
+                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                     }
-                }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                }).setCancelable(true)
-                .create();
-        alertDialog.show();
+                });
+            }
+        });
+        delete.setCancelText("Não").setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismissWithAnimation();
+            }
+        });
+        delete.setCancelable(true);
+        delete.show();
     }
 
     private void onSaveButton(){
@@ -150,11 +166,14 @@ public class UserEditFragment extends Fragment {
         final String email = _email.getText().toString().trim();
         final String phone = _phone.getText().toString().trim();
 
+        final SweetAlertDialog save = new SweetAlertDialog(getActivity(),SweetAlertDialog.PROGRESS_TYPE);
+        save.setTitleText("Salvando");
+        save.show();
+
         Map<String,Object> data = new HashMap<>();
         data.put("displayName",name);
         data.put("phone",phone);
         data.put("email",email);
-        data.put("backImage",back_img.toString());
 
         db.collection(UserValues.USER_DATABASE_REFERENCE).document(user.getUid())
                 .set(data, SetOptions.merge());
@@ -167,7 +186,22 @@ public class UserEditFragment extends Fragment {
         user.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-
+                if(task.isSuccessful()){
+                    save.setTitleText("Salvo")
+                            .setConfirmText("OK")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                    getFragmentManager().popBackStack();
+                                }
+                            })
+                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                } else {
+                    save.setTitleText("Erro")
+                    .setContentText("Não foi possível atualizar o perfil")
+                    .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                }
             }
         });
     }
