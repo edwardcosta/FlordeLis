@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.R;
+import com.flordelis.flordelis.Request.DatabaseRequest;
 import com.flordelis.flordelis.Screens.Product.ProductActivity;
 import com.flordelis.flordelis.Utils.Product.ProductAdapter;
 import com.flordelis.flordelis.Utils.StaticValues.ProductValues;
@@ -53,7 +54,6 @@ public class ProductListFragment extends Fragment {
 
     private FirebaseFirestore db;
     private FirebaseUser user;
-    private ListenerRegistration queryListener;
 
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
@@ -65,9 +65,6 @@ public class ProductListFragment extends Fragment {
     private List<Product> queryColor = new ArrayList<>();
     private List<Product> queryProduct = new ArrayList<>();
     private List<Product> queryID = new ArrayList<>();
-
-
-    private String lastQuery;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -234,32 +231,17 @@ public class ProductListFragment extends Fragment {
 
     private void onQuery(String query){
         swipeRefreshLayout.setRefreshing(true);
-        lastQuery = query;
-        if(queryListener != null){
-            queryListener.remove();
-        }
         products.clear();
-        db.collection(ProductValues.PRODUCT_DATABASE_REFERENCE)
-                .whereEqualTo("situation",query)
-                .get()
-        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        DatabaseRequest.getProductQuery(query, new DatabaseRequest.ProductCallback() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for (DocumentSnapshot document : task.getResult()) {
-                        Product product = document.toObject(Product.class);
-                        products.add(product);
-                    }
-                    onRefreshContent();
-                } else {
-                    Log.d("FirestoreError", "get failed with ", task.getException());
-                }
+            public void productCallback(List<Product> products) {
+                ProductListFragment.this.products = products;
+                onRefreshContent();
             }
         });
     }
 
     private void onRefreshContent(){
-        Collections.sort(products);
         productAdapter = new ProductAdapter(this.getContext(), products);
         recyclerView.setAdapter(productAdapter);
         swipeRefreshLayout.setRefreshing(false);

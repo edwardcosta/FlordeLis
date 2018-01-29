@@ -1,13 +1,11 @@
 package com.flordelis.flordelis.Screens.User.Fragment;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +16,13 @@ import android.widget.Toast;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.flordelis.flordelis.R;
 import com.flordelis.flordelis.Screens.Authentication.LoginActivity;
+import com.flordelis.flordelis.Utils.CheckPermissions;
+import com.flordelis.flordelis.Utils.ImagePicker;
 import com.flordelis.flordelis.Utils.StaticValues.UserValues;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -52,9 +51,6 @@ public class UserEditFragment extends Fragment {
     private Button _change_back_img;
     private Button _delete;
     private Button _save;
-
-    private Uri img;
-    private Uri back_img;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,7 +84,12 @@ public class UserEditFragment extends Fragment {
         _change_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"Trocar imagem de perfil",Toast.LENGTH_SHORT).show();
+                if(CheckPermissions.checkPermissions(getActivity(),CheckPermissions.READ_EXTERNAL_STORAGE) &&
+                        CheckPermissions.checkPermissions(getActivity(),CheckPermissions.WRITE_EXTERNAL_STORAGE) &&
+                        CheckPermissions.checkPermissions(getActivity(),CheckPermissions.CAMERA) ) {
+                    //ImagePicker.croperinoImagePicker(getActivity());
+                    ImagePicker.defaultImagePicker(getActivity());
+                }
             }
         });
 
@@ -180,7 +181,6 @@ public class UserEditFragment extends Fragment {
 
         UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
                 .setDisplayName(name)
-                .setPhotoUri(img)
                 .build();
         user.updateEmail(email);
         user.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -202,6 +202,27 @@ public class UserEditFragment extends Fragment {
                     .setContentText("Não foi possível atualizar o perfil")
                     .changeAlertType(SweetAlertDialog.ERROR_TYPE);
                 }
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /*ImagePicker.croperinoActivityResult(requestCode, resultCode, data, getActivity(), new ImagePicker.ImageCallBack() {
+            @Override
+            public void imageCallback(Uri imageURI, boolean hasImage) {
+                _img.setImageURI(imageURI);
+                UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
+                        .setPhotoUri(imageURI)
+                        .build();
+                user.updateProfile(request);
+            }
+        });*/
+        ImagePicker.defaultActivityResult(requestCode, resultCode, data, getActivity(), new ImagePicker.ImageCallBack() {
+            @Override
+            public void imageCallback(Uri imageURI, boolean hasImage) {
+                _img.setImageURI(imageURI);
             }
         });
     }
