@@ -144,7 +144,7 @@ public class ProductActivity extends AppCompatActivity {
                         .commit();
                 return true;
             case android.R.id.home:
-                super.onBackPressed();
+                onBackPressed();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
