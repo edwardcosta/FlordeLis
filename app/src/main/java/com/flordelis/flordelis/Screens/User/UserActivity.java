@@ -157,4 +157,17 @@ public class UserActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(fragmentManager.findFragmentById(R.id.activity_user_fragment) instanceof UserEditFragment){
+            for(Fragment f : fragmentManager.getFragments()){
+                if(f instanceof UserEditFragment){
+                    ((UserEditFragment)f).onActivityResult(requestCode,resultCode,data);
+                }
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 }

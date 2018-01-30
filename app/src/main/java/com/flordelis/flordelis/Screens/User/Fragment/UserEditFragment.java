@@ -87,8 +87,8 @@ public class UserEditFragment extends Fragment {
                 if(CheckPermissions.checkPermissions(getActivity(),CheckPermissions.READ_EXTERNAL_STORAGE) &&
                         CheckPermissions.checkPermissions(getActivity(),CheckPermissions.WRITE_EXTERNAL_STORAGE) &&
                         CheckPermissions.checkPermissions(getActivity(),CheckPermissions.CAMERA) ) {
-                    //ImagePicker.croperinoImagePicker(getActivity());
-                    ImagePicker.defaultImagePicker(getActivity());
+                    ImagePicker.croperinoImagePicker(getActivity());
+                    //ImagePicker.defaultImagePicker(getActivity());
                 }
             }
         });
@@ -208,18 +208,7 @@ public class UserEditFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        /*ImagePicker.croperinoActivityResult(requestCode, resultCode, data, getActivity(), new ImagePicker.ImageCallBack() {
-            @Override
-            public void imageCallback(Uri imageURI, boolean hasImage) {
-                _img.setImageURI(imageURI);
-                UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
-                        .setPhotoUri(imageURI)
-                        .build();
-                user.updateProfile(request);
-            }
-        });*/
-        ImagePicker.defaultActivityResult(requestCode, resultCode, data, getActivity(), new ImagePicker.ImageCallBack() {
+        ImagePicker.croperinoActivityResult(requestCode, resultCode, data, getActivity(), new ImagePicker.ImageCallBack() {
             @Override
             public void imageCallback(Uri imageURI, boolean hasImage) {
                 _img.setImageURI(imageURI);

@@ -265,43 +265,32 @@ public class ImagePicker {
 
         Croperino.prepareChooser(activity, "Escolher foto...",
                 ContextCompat.getColor(activity, android.R.color.background_dark));
-
-        //Prepare Camera
-        try {
-            Croperino.prepareCamera(activity);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-        Croperino.prepareGallery(activity);
     }
 
     public static void croperinoActivityResult(int requestCode, int resultCode, Intent data, Activity activity,
                                                ImageCallBack imageCallBack){
-        switch (requestCode) {
-            case CroperinoConfig.REQUEST_TAKE_PHOTO:
-                if (resultCode == Activity.RESULT_OK) {
+        if(resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case CroperinoConfig.REQUEST_TAKE_PHOTO:
                     //Parameters of runCropImage =
                     //File, Activity Context, Image is Scalable or Not, Aspect Ratio X, Aspect Ratio Y, Button Bar Color, Background Color
-                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), activity, true, 1, 1, 0, 0);
-                }
-                break;
-            case CroperinoConfig.REQUEST_PICK_FILE:
-                if (resultCode == Activity.RESULT_OK) {
+                    Croperino.runCropImage(
+                            CroperinoFileUtil.getmFileTemp(), activity, true, 1, 1, 0, 0);
+                    break;
+                case CroperinoConfig.REQUEST_PICK_FILE:
                     CroperinoFileUtil.newGalleryFile(data, activity);
-                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), activity, true, 1, 1, 0, 0);
-                }
-                break;
-            case CroperinoConfig.REQUEST_CROP_PHOTO:
-                if (resultCode == Activity.RESULT_OK) {
+                    Croperino.runCropImage(
+                            CroperinoFileUtil.getmFileTemp(), activity, true, 1, 1, 0, 0);
+                    break;
+                case CroperinoConfig.REQUEST_CROP_PHOTO:
                     Uri i = Uri.fromFile(CroperinoFileUtil.getmFileTemp());
-                    imageCallBack.imageCallback(i,true);
+                    imageCallBack.imageCallback(i, true);
                     //Do saving / uploading of photo method here.
                     //The image file can always be retrieved via CroperinoFileUtil.getmFileTemp()
-                }
-                break;
-            default:
-                break;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
