@@ -39,6 +39,10 @@ public class UserEditFragment extends Fragment {
 
     private View parentView;
 
+    private static final int CHANGE_USER_IMG = 212;
+    private static final int CHANGE_BACK_IMG = 313;
+    private int ACTIVITY_REQUEST_NUMBER = 0;
+
     private FirebaseFirestore db;
     private FirebaseUser user;
 
@@ -88,7 +92,7 @@ public class UserEditFragment extends Fragment {
                         CheckPermissions.checkPermissions(getActivity(),CheckPermissions.WRITE_EXTERNAL_STORAGE) &&
                         CheckPermissions.checkPermissions(getActivity(),CheckPermissions.CAMERA) ) {
                     ImagePicker.croperinoImagePicker(getActivity());
-                    //ImagePicker.defaultImagePicker(getActivity());
+                    ACTIVITY_REQUEST_NUMBER = CHANGE_USER_IMG;
                 }
             }
         });
@@ -96,7 +100,12 @@ public class UserEditFragment extends Fragment {
         _change_back_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"Trocar imagem do fundo",Toast.LENGTH_SHORT).show();
+                if(CheckPermissions.checkPermissions(getActivity(),CheckPermissions.READ_EXTERNAL_STORAGE) &&
+                        CheckPermissions.checkPermissions(getActivity(),CheckPermissions.WRITE_EXTERNAL_STORAGE) &&
+                        CheckPermissions.checkPermissions(getActivity(),CheckPermissions.CAMERA) ) {
+                    ImagePicker.croperinoImagePicker(getActivity());
+                    ACTIVITY_REQUEST_NUMBER = CHANGE_BACK_IMG;
+                }
             }
         });
 
@@ -208,11 +217,25 @@ public class UserEditFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        ImagePicker.croperinoActivityResult(requestCode, resultCode, data, getActivity(), new ImagePicker.ImageCallBack() {
-            @Override
-            public void imageCallback(Uri imageURI, boolean hasImage) {
-                _img.setImageURI(imageURI);
-            }
-        });
+        switch (ACTIVITY_REQUEST_NUMBER){
+            case CHANGE_USER_IMG:
+                ImagePicker.croperinoActivityResult(requestCode, resultCode, data, getActivity(), new ImagePicker.ImageCallBack() {
+                    @Override
+                    public void imageCallback(Uri imageURI, boolean hasImage) {
+                        _img.setImageURI(imageURI);
+                    }
+                });
+                break;
+            case CHANGE_BACK_IMG:
+                ImagePicker.croperinoActivityResult(requestCode, resultCode, data, getActivity(), new ImagePicker.ImageCallBack() {
+                    @Override
+                    public void imageCallback(Uri imageURI, boolean hasImage) {
+                        _back_img.setImageURI(imageURI);
+                    }
+                });
+                break;
+            default:
+                break;
+        }
     }
 }
