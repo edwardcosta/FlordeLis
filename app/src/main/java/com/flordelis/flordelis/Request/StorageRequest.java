@@ -24,11 +24,6 @@ public class StorageRequest {
         return storage.getReferenceFromUrl(url).child("products").child("images");
     }
 
-    public static StorageReference getPathProductImages(String productId, String imgID){
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        return storage.getReferenceFromUrl(url).child("products").child("images").child(productId).child(imgID);
-    }
-
     public static StorageReference getPathProductImages(String productId){
         FirebaseStorage storage = FirebaseStorage.getInstance();
         return storage.getReferenceFromUrl(url).child("products").child("images").child(productId);
