@@ -143,8 +143,8 @@ public class UserActivity extends AppCompatActivity {
                         });
                 return true;
             case R.id.action_edit_user:
-                item.setVisible(false);
                 _editUser = item;
+                _editUser.setVisible(false);
                 fragmentManager.beginTransaction()
                         .replace(R.id.activity_user_fragment,new UserEditFragment())
                         .addToBackStack(null)
@@ -166,6 +166,8 @@ public class UserActivity extends AppCompatActivity {
                     ((UserEditFragment)f).onActivityResult(requestCode,resultCode,data);
                 }
             }
+
+            ((UserEditFragment)fragment).onActivityResult(requestCode,resultCode,data);
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

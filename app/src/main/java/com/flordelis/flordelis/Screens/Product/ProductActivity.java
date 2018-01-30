@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +25,10 @@ import com.flordelis.flordelis.Model.Product;
 import com.flordelis.flordelis.Model.User;
 import com.flordelis.flordelis.R;
 import com.flordelis.flordelis.Screens.Authentication.LoginActivity;
+import com.flordelis.flordelis.Screens.Product.Fragment.ProductEditFragment;
+import com.flordelis.flordelis.Screens.Product.Fragment.ProductFragment;
+import com.flordelis.flordelis.Screens.User.Fragment.UserEditFragment;
+import com.flordelis.flordelis.Screens.User.Fragment.UserFragment;
 import com.flordelis.flordelis.Screens.User.UserActivity;
 import com.flordelis.flordelis.Utils.StaticValues.ProductValues;
 import com.flordelis.flordelis.Utils.StaticValues.UserValues;
@@ -43,30 +50,13 @@ public class ProductActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-    FirebaseFirestore db;
+    private MenuItem _editProduct;
 
     private Product product;
     private SimpleDraweeView _img;
-    private TextView _name;
-    private TextView _id;
-    private TextView _buyed_price;
-    private TextView _sell_price;
-    private TextView _situation;
-    private TextView _color;
-    private TextView _size;
-    private TextView _provider;
-    private TextView _description;
-    private TextView _added_by;
-    private TextView _added_date;
-    private LinearLayout _edited_layout;
-    private TextView _edited_by;
-    private TextView _edited_date;
-    private LinearLayout _deleted_layout;
-    private TextView _deleted_by;
-    private TextView _deleted_date;
-    private LinearLayout _sold_layout;
-    private TextView _sold_by;
-    private TextView _sold_date;
+
+    private Fragment fragment;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,29 +70,9 @@ public class ProductActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         findViewById(R.id.activity_product_appbar).bringToFront();
 
-        db = FirebaseFirestore.getInstance();
-
         _img = findViewById(R.id.activity_product_image);
-        _name = findViewById(R.id.activity_product_name);
-        _id = findViewById(R.id.activity_product_id);
-        _buyed_price = findViewById(R.id.activity_product_buyed_price);
-        _sell_price = findViewById(R.id.activity_product_sell_price);
-        _situation = findViewById(R.id.activity_product_situation);
-        _color = findViewById(R.id.activity_product_color);
-        _size = findViewById(R.id.activity_product_size);
-        _provider = findViewById(R.id.activity_product_provider);
-        _description = findViewById(R.id.activity_product_description);
-        _added_by = findViewById(R.id.activity_product_added_by);
-        _added_date = findViewById(R.id.activity_product_added_date);
-        _edited_layout = findViewById(R.id.activity_product_edited_layout);
-        _edited_by = findViewById(R.id.activity_product_edited_by);
-        _edited_date = findViewById(R.id.activity_product_edited_date);
-        _deleted_layout = findViewById(R.id.activity_product_deleted_layout);
-        _deleted_by = findViewById(R.id.activity_product_deleted_by);
-        _deleted_date = findViewById(R.id.activity_product_deleted_date);
-        _sold_layout = findViewById(R.id.activity_product_sold_layout);
-        _sold_by = findViewById(R.id.activity_product_sold_by);
-        _sold_date = findViewById(R.id.activity_product_sold_date);
+
+        fragmentManager = getSupportFragmentManager();
 
         Bundle bundle = getIntent().getExtras();
 
@@ -112,6 +82,20 @@ public class ProductActivity extends AppCompatActivity {
             _img.setTransitionName(string);
             if(product != null && product.getImages() != null && !product.getImages().isEmpty())
                 _img.setImageURI(product.getImages().get(0));
+            Bundle _bundle = new Bundle();
+            _bundle.putSerializable("product",product);
+
+            final FragmentTransaction fragmentTransaction;
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragment = fragmentManager.findFragmentById(R.id.activity_product_fragment);
+
+            if (fragment != null) {
+                fragmentTransaction.remove(fragment);
+            }
+
+            fragment = new ProductFragment();
+            fragment.setArguments(_bundle);
+            fragmentTransaction.add(R.id.activity_product_fragment, fragment).commit();
         }
 
         postponeEnterTransition();
@@ -128,88 +112,19 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        if(product != null){
-            _name.setText(product.getProductName());
-            _id.setText(product.getId());
-            String buyed_price = NumberFormat.getCurrencyInstance().format(Float.parseFloat(product.getBuyedPrice()));
-            _buyed_price.setText(buyed_price);
-            String sell_price = NumberFormat.getCurrencyInstance().format(Float.parseFloat(product.getSellPrice()));
-            _sell_price.setText(sell_price);
-            _situation.setText(product.getSituation());
-            _color.setText(product.getColor());
-            _size.setText(product.getSize());
-            _provider.setText(product.getProviderName());
-            _description.setText(product.getDescription());
-            _added_by.setText(product.getAddedBy());
-            db.collection(UserValues.USER_DATABASE_REFERENCE).document(product.getAddedBy())
-                    .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if(task.isSuccessful()){
-                        User user = task.getResult().toObject(User.class);
-                        _added_by.setText(user.getDisplayName());
-                    }
-                }
-            });
-            _added_date.setText(TimeStamp.getDateCurrentTimeZone(product.getDatetimeCreated()));
-            if(product.getDatetimeEdited() != 0){
-                _edited_layout.setVisibility(View.VISIBLE);
-                _edited_by.setText(product.getEditedBy());
-                db.collection(UserValues.USER_DATABASE_REFERENCE).document(product.getEditedBy())
-                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if(task.isSuccessful()){
-                            User user = task.getResult().toObject(User.class);
-                            _edited_by.setText(user.getDisplayName());
-                        }
-                    }
-                });
-                _edited_date.setText(TimeStamp.getDateCurrentTimeZone(product.getDatetimeEdited()));
-            }
-            switch (product.getSituation()) {
-                case ProductValues.PRODUCT_SITUATION_SOLD:
-                    _sold_layout.setVisibility(View.VISIBLE);
-                    _sold_by.setText(product.getSoldBy());
-                    db.collection(UserValues.USER_DATABASE_REFERENCE).document(product.getSoldBy())
-                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if(task.isSuccessful()){
-                                User user = task.getResult().toObject(User.class);
-                                _sold_by.setText(user.getDisplayName());
-                            }
-                        }
-                    });
-                    _sold_date.setText(TimeStamp.getDateCurrentTimeZone(product.getDatetimeSold()));
-                    break;
-                case ProductValues.PRODUCT_SITUATION_DELETED:
-                    _deleted_layout.setVisibility(View.VISIBLE);
-                    _deleted_by.setText(product.getDeletedBy());
-                    db.collection(UserValues.USER_DATABASE_REFERENCE).document(product.getDeletedBy())
-                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if(task.isSuccessful()){
-                                User user = task.getResult().toObject(User.class);
-                                _deleted_by.setText(user.getDisplayName());
-                            }
-                        }
-                    });
-                    _deleted_date.setText(TimeStamp.getDateCurrentTimeZone(product.getDatetimeDeleted()));
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_product, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(fragmentManager.findFragmentById(R.id.activity_product_fragment) instanceof ProductEditFragment){
+            fragmentManager.popBackStack();
+            _editProduct.setVisible(true);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -217,7 +132,16 @@ public class ProductActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_edit_product:
-                Toast.makeText(this, "Editar Produto clicado", Toast.LENGTH_SHORT).show();
+                _editProduct = item;
+                _editProduct.setVisible(false);
+                fragment = new ProductEditFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("product",product);
+                fragment.setArguments(bundle);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.activity_product_fragment,fragment)
+                        .addToBackStack(null)
+                        .commit();
                 return true;
             case android.R.id.home:
                 super.onBackPressed();

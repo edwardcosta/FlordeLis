@@ -7,4 +7,29 @@
         <item>Deletado</item>
     </string-array>
 
+    <!-- Tamanho chooser -->
+    <string-array name="size_type_chooser">
+        <item>Padrão</item>
+        <item>Numeração</item>
+        <item>Único</item>
+    </string-array>
+    <string-array name="size_array">
+        <item>PP</item>
+        <item>P</item>
+        <item>M</item>
+        <item>G</item>
+        <item>GG</item>
+    </string-array>
+    <string-array name="size_numeration">
+        <item>34</item>
+        <item>36</item>
+        <item>38</item>
+        <item>40</item>
+        <item>42</item>
+        <item>44</item>
+        <item>46</item>
+        <item>48</item>
+        <item>50</item>
+    </string-array>
+
 </resources>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Nome do Produto -->
+    <android.support.v7.widget.CardView
+        android:elevation="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <!-- Name -->
+            <EditText
+                android:id="@+id/fragment_edit_product_name"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textAutoCorrect|textCapWords"
+                android:text="Produto"/>
+
+            <!-- ID -->
+            <TextView
+                android:id="@+id/fragment_edit_product_id"
+                android:textSize="@dimen/text_small_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="id"/>
+
+            <!-- Prices -->
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/fragment_edit_product_buyed_price"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/red_80"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:text="Preço de compra"/>
+
+                <EditText
+                    android:id="@+id/fragment_edit_product_sell_price"
+                    android:layout_marginLeft="4dp"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/colorTextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:text="Preço de Venda"/>
+
+
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/fragment_edit_user_situation"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/product_situation"/>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_size_large"
+        android:background="@color/lighter_gray"/>
+
+    <android.support.v7.widget.CardView
+        android:elevation="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cor:"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/fragment_edit_product_color"
+                android:layout_marginTop="8dp"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textAutoComplete|textAutoCorrect"
+                android:text="Cor"/>
+
+            <View
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_size"
+                android:background="@color/colorDivider"/>
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tamanho:"/>
+
+            <Spinner
+                android:id="@+id/fragment_edit_product_size_type_chooser_spinner"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/size_type_chooser"/>
+
+            <LinearLayout
+                android:id="@+id/fragment_edit_product_size_choice_layout"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <CheckBox
+                    android:id="@+id/fragment_edit_product_bbsize"
+                    android:text="Baby Look?"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="@color/colorTextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/fragment_edit_product_size_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/size_array"/>
+
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/fragment_edit_product_numeration_spinner"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/size_numeration"/>
+
+            <View
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_size"
+                android:background="@color/colorDivider"/>
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fornecedor:"/>
+
+            <Spinner
+                android:id="@+id/fragment_edit_product_provider"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_size_large"
+        android:background="@color/lighter_gray"/>
+
+    <android.support.v7.widget.CardView
+        android:elevation="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:textSize="@dimen/text_large_size"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descrição:"/>
+
+            <EditText
+                android:id="@+id/fragment_edit_product_description"
+                android:layout_marginTop="8dp"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorTextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine|textAutoCorrect"
+                android:text="Descrição"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/fragment_edit_product_change_image"
+            android:layout_margin="8dp"
+            android:background="@color/blue"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Imagem"
+            android:drawableLeft="@drawable/ic_image"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_small_size"/>
+
+        <Button
+            android:id="@+id/fragment_edit_product_delete"
+            android:layout_margin="8dp"
+            android:background="@color/red_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Deletar"
+            android:drawableLeft="@drawable/ic_delete"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_small_size"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/fragment_edit_product_save"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Salvar"
+        android:textAllCaps="false"
+        android:drawableLeft="@drawable/ic_check"
+        android:drawableTint="@color/white"
+        android:textSize="@dimen/text_large_size"
+        android:textColor="@color/white"
+        android:background="@color/green"/>
+
+</LinearLayout>
